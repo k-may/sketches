@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "sourceMap": true,
+    "module": "amd",
+    "target": "es5"
+  },
+  "files" : [
+    "./typings/index.d.ts",
+    "./app/scripts/*.ts"
+  ]
+}
