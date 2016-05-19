@@ -2,7 +2,9 @@
  * Created by kev on 2016-05-18.
  */
 ///<reference path="../../../../typings/globals/tween.js/index.d.ts"/>
-import TWEEN = require('tween');
+///<reference path="../../../../typings/globals/jquery/index.d.ts"/>
+
+import TWEEN = require('tweenjs');
 import $ = require('jquery');
 
 class BaseSketch {
@@ -10,19 +12,20 @@ class BaseSketch {
     $el:any;
     el:HTMLElement;
 
-    _scrollHeight:Number = -1;
+    _scrollHeight:number = -1;
     _mousePos:any;
     _tween:TWEEN.Tween;
-    _windowWidth:Number = -1;
-    _windowHeight:Number = -1;
-    _scrollRatio:Number = 0.0;
+    _windowWidth:number = -1;
+    _windowHeight:number = -1;
+    _scrollRatio:number = 0.0;
     _invalidated:boolean = false;
-    _animDuration:Number = 1000;
+    _animDuration:number = 1000;
 
-    id:String;
+    id:string;
 
     constructor() {
         this.el = document.createElement("div");
+        this.el.setAttribute('class', 'sketch_cont');
         this.$el = $(this.el);
     }
 
@@ -71,12 +74,12 @@ class BaseSketch {
             .start();
     }
 
-    setScrollRatio(ratio:Number) {
+    setScrollRatio(ratio:number) {
         this._scrollRatio = ratio;
         this.invalidate();
     }
 
-    draw(time?:Number) :any{
+    draw(time?:number) :any{
 
         if (this._invalidated) {
 

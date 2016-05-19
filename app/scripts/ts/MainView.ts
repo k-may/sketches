@@ -3,16 +3,18 @@
  */
 
 ///<reference path="../../../typings/globals/require/index.d.ts"/>
+///<reference path="../../../typings/globals/es6-shim/index.d.ts"/>
 
 import $ = require('jquery');
 import BaseSketch = require("./common/BaseSketch");
+import MenuView = require("./views/MenuView");
 
 class MainView {
 
     sketch:BaseSketch;
     expander:any;
-    menu:any;
-    sketches:any;
+    menu:MenuView;
+    sketches:any = {};
     cachedViews:any = {};
     DEFAULT_SKETCH:string;
     loaded:boolean = false;
@@ -29,6 +31,9 @@ class MainView {
     }
 
     start() {
+
+        this.menu = new MenuView(this.sketches);
+        document.body.appendChild(this.menu.el);
 
         for (var key in this.sketches) {
             this.DEFAULT_SKETCH = key;
@@ -58,7 +63,9 @@ class MainView {
     }
 
     onResize(e:any) {
-
+        if(this.sketch){
+            this.sketch.resize(window.innerWidth, window.innerHeight);
+        }
     }
 
     onScroll(e:any) {
@@ -67,28 +74,29 @@ class MainView {
 
     onHashChange(e:any) {
         var sketchId = location.hash.split("#")[1];
-
         var idValid = this.sketches.hasOwnProperty(sketchId);
         sketchId = idValid ? sketchId : this.DEFAULT_SKETCH;
 
         if (this.sketch) {
-
             if (this.sketch.id === sketchId) {
                 return;
             }
-
             $('HTML').removeClass(this.sketch.id);
             this.sketch.remove();
         }
 
-        var View = this.sketches[sketchId].View;
-        if (this.cachedViews.hasOwnProperty(sketchId)) {
-            this.sketch = this.cachedViews[sketchId];
-        } else {
-            var Class:any = require("ts/sketches/" + View);
-            this.sketch = new Class();
-        }
+        var self = this;
+        this.getClass(sketchId).then((sketch) => {
+            sketch.id = sketchId;
+            self.addSketch(sketch);
+        });
+        
+    }
 
+    addSketch(sketch:BaseSketch){
+        this.sketch = sketch;
+
+        var sketchId = this.sketch.id;
         this.cachedViews[sketchId] = this.sketch;
         this.sketch.id = sketchId;
         $('HTML').addClass(sketchId);
@@ -96,18 +104,38 @@ class MainView {
         location.hash = "#" + sketchId;
 
         //update menu
-        $("li").removeClass("active");
-        document.getElementById(sketchId).setAttribute("class", "active");
+        if(this.menu) {
+            $("li").removeClass("active");
+            document.getElementById(sketchId).setAttribute("class", "active");
+        }
 
         this.onResize(null);
         this.onScroll(null);
+    }
+    
+    getClass(sketchId:string):Promise<any> {
+
+        var self = this;
+        return new Promise(function (resolve, reject) {
+            var View = self.sketches[sketchId].View;
+            if (self.cachedViews.hasOwnProperty(sketchId)) {
+                resolve(self.cachedViews[sketchId]);
+            } else {
+                var path = "../../scripts/ts/sketches/" + View + ".js";
+                require([path], function (Class) {
+                    var sketch = new Class();
+                    resolve(sketch);
+                });
+            }
+
+        });
     }
 
     onMouseMove(e:any) {
 
     }
 
-    draw(time:Number) {
+    draw(time:number) {
 
         if (!this.loaded) {
             return;

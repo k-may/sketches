@@ -1,4 +1,9 @@
-define(["require", "exports", 'tween', 'jquery'], function (require, exports, TWEEN, $) {
+/**
+ * Created by kev on 2016-05-18.
+ */
+///<reference path="../../../../typings/globals/tween.js/index.d.ts"/>
+///<reference path="../../../../typings/globals/jquery/index.d.ts"/>
+define(["require", "exports", 'tweenjs', 'jquery'], function (require, exports, TWEEN, $) {
     "use strict";
     var BaseSketch = (function () {
         function BaseSketch() {
@@ -9,6 +14,7 @@ define(["require", "exports", 'tween', 'jquery'], function (require, exports, TW
             this._invalidated = false;
             this._animDuration = 1000;
             this.el = document.createElement("div");
+            this.el.setAttribute('class', 'sketch_cont');
             this.$el = $(this.el);
         }
         BaseSketch.prototype.resize = function (w, h) {

@@ -1,16 +1,35 @@
 /**
  * Created by kev on 15-07-16.
  */
-/**
- * ...
- * @author emlyn@resn.co.nz
- */
+
+// Include a performance.now polyfill
+(function () {
+
+	if ('performance' in window === false) {
+		window.performance = {};
+	}
+
+	// IE 8
+	Date.now = (Date.now || function () {
+		return new Date().getTime();
+	});
+
+	if ('now' in window.performance === false) {
+		var offset = window.performance.timing && window.performance.timing.navigationStart ? window.performance.timing.navigationStart
+			: Date.now();
+
+		window.performance.now = function () {
+			return Date.now() - offset;
+		};
+	}
+
+})();
 
 require.config({
 
 	paths:{
 		'jquery' : 'components/jQuery/dist/jquery.min',
-		'tween' : 'components/tween.js/src/Tween',
+		'tweenjs' : 'components/tween.js/src/Tween',
 		'underscore' : 'components/underscore/underscore-min'
 	},
 
@@ -18,7 +37,7 @@ require.config({
 		'underscore' : {
 			'exports' : '_'
 		},
-		'tween' : {
+		'tweenjs' : {
 			'exports' : 'TWEEN'
 		}
 	},
@@ -32,6 +51,18 @@ define("modernizr",function () {
 });
 
 //# Start loading main entrypoint
-require(["ts/MainView"],function (MainView) {
+require(["ts/MainView", "tweenjs"],function (MainView, TWEEN) {
 	var mainView = new MainView();
+
+	function draw(){
+		window.requestAnimationFrame(draw);
+
+		var time = window.performance.now();
+		TWEEN.update(time);
+		mainView.draw(time);
+
+	}
+	draw();
+
+
 });

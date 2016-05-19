@@ -3,18 +3,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "./Col", "../../common/BaseSketch", "../../common/CanvasBuffer2D"], function (require, exports, Col, BaseSketch, CanvasBuffer2D) {
+define(["require", "exports", "./Col", "../../common/CanvasBuffer2D", "../../common/BaseSketch"], function (require, exports, Col, CanvasBuffer2D, BaseSketch) {
     "use strict";
     /**
      * Created by kev on 2016-05-18.
      */
     var Triangles2D = (function (_super) {
         __extends(Triangles2D, _super);
-        function Triangles2D(div) {
+        function Triangles2D() {
             _super.call(this);
             this.windowWidth = 0;
             this.windowHeight = 0;
-            this.size = 20;
+            this.size = 10;
             this.res = 50;
             var num = 100;
             this.cols1 = [];
@@ -32,17 +32,16 @@ define(["require", "exports", "./Col", "../../common/BaseSketch", "../../common/
              div.appendChild(this.buffer1.canvas);
              div.appendChild(this.buffer2.canvas);
              */
-            this.addBuffer(div, this.buffer1);
-            this.addBuffer(div, this.buffer2);
+            this.addBuffer(this.buffer1);
+            this.addBuffer(this.buffer2);
             this.buffer2.canvas.style.opacity = "0.7";
         }
-        Triangles2D.prototype.addBuffer = function (div, b) {
-            div.appendChild(b.canvas);
+        Triangles2D.prototype.addBuffer = function (b) {
+            this.el.appendChild(b.canvas);
             b.canvas.style.position = "absolute";
-            b.canvas.style.top = 0;
+            b.canvas.style.top = "0px";
         };
         Triangles2D.prototype.draw = function (time) {
-            //this.buffer.clear();
             this.drawBuffer1();
             this.drawBuffer2();
         };

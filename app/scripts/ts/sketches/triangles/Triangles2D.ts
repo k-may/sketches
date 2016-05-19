@@ -1,6 +1,7 @@
 import Col = require("./Col");
-import BaseSketch = require("../../common/BaseSketch");
 import CanvasBuffer2D = require("../../common/CanvasBuffer2D");
+import BaseSketch = require("../../common/BaseSketch");
+
 /**
  * Created by kev on 2016-05-18.
  */
@@ -9,7 +10,8 @@ class Triangles2D extends BaseSketch {
 
     windowWidth:number = 0;
     windowHeight:number = 0;
-    size:number = 20;
+    size:number = 10;
+
 
     cols1 : Col[];
     cols2 : Col[];
@@ -19,7 +21,7 @@ class Triangles2D extends BaseSketch {
     buffer1 : CanvasBuffer2D;
     buffer2 : CanvasBuffer2D;
 
-    constructor(div:HTMLElement) {
+    constructor() {
         super();
 
         var num = 100;
@@ -42,25 +44,20 @@ class Triangles2D extends BaseSketch {
          div.appendChild(this.buffer2.canvas);
          */
 
-        this.addBuffer(div, this.buffer1);
-        this.addBuffer(div, this.buffer2);
+        this.addBuffer(this.buffer1);
+        this.addBuffer(this.buffer2);
         this.buffer2.canvas.style.opacity = "0.7";
     }
 
-    addBuffer(div:HTMLElement, b:CanvasBuffer2D){
-        div.appendChild(b.canvas);
+    addBuffer(b:CanvasBuffer2D){
+        this.el.appendChild(b.canvas);
         b.canvas.style.position = "absolute";
-        b.canvas.style.top = 0;
-
+        b.canvas.style.top = "0px";
     }
 
     draw(time?:Number) {
-
-        //this.buffer.clear();
         this.drawBuffer1();
         this.drawBuffer2();
-
-
     }
 
     drawBuffer1(){
