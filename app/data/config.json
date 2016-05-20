@@ -2,6 +2,9 @@
   "sketches" : {
     "Triangles" : {
       "View" : "triangles/Triangles2D"
+    },
+    "Carousel3D" : {
+      "View" : "carousel3D/Carousel3D"
     }
   }
 }

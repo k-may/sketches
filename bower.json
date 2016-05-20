@@ -22,6 +22,7 @@
     "three.js": "threejs#*",
     "jQuery": "^2.2.3",
     "modernizr": "^3.3.1",
-    "es6-shim": "^0.35.1"
+    "es6-shim": "^0.35.1",
+    "handlebars": "^4.0.5"
   }
 }

@@ -59,7 +59,7 @@ class MainView {
     }
 
     onClick(e:any) {
-
+        
     }
 
     onResize(e:any) {

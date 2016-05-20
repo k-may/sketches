@@ -1,0 +1,47 @@
+html, body {
+
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.sketch_cont {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+ul {
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  font-family: Consolas, Helvetica, sans-serif;
+  font-size: 13px;
+  padding-left: 20px;
+
+  li {
+    width: auto;
+    margin: 4px 0;
+    list-style-type: none;
+    background: rgba(27, 27, 27, 0.49);
+    cursor: pointer;
+    padding: 3px 14px;
+    color: #fff;
+
+    &.active {
+      background: rgba(228, 228, 228, 0.72);
+    }
+
+    &:hover {
+      background: rgba(238, 238, 238, 0.7);
+    }
+  }
+}

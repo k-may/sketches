@@ -3,7 +3,9 @@
   "dependencies": {},
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
+    "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "modernizr": "registry:dt/modernizr#3.2.0+20160215162030",
     "require": "registry:dt/require#2.1.20+20160316155526",
     "three": "registry:dt/three#0.0.0+20160517065351",
     "tween.js": "registry:dt/tween.js#0.0.0+20160317120654",

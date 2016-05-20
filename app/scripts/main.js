@@ -30,7 +30,10 @@ require.config({
 	paths:{
 		'jquery' : 'components/jQuery/dist/jquery.min',
 		'tweenjs' : 'components/tween.js/src/Tween',
-		'underscore' : 'components/underscore/underscore-min'
+		'underscore' : 'components/underscore/underscore-min',
+		'modernizr' : 'components/modernizr/bin/modernizr',
+		'handlebars' : 'components/handlebars/handlebars.min',
+		'text' : 'components/text/text'
 	},
 
 	shim:{

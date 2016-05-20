@@ -67,9 +67,10 @@ gulp.task('copy', () =>
     .pipe($.size({title: 'copy'}))
 );
 
+
 // Compile and automatically prefix stylesheets
-gulp.task('styles', () => {
-  const AUTOPREFIXER_BROWSERS = [
+gulp.task('styles', function () {
+  var AUTOPREFIXER_BROWSERS = [
     'ie >= 10',
     'ie_mob >= 10',
     'ff >= 30',
@@ -83,21 +84,26 @@ gulp.task('styles', () => {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/styles/**/*.scss',
-    'app/styles/**/*.css'
-  ])
-    .pipe($.newer('.tmp/styles'))
-    .pipe($.sourcemaps.init())
-    .pipe($.sass({
-      precision: 10
-    }).on('error', $.sass.logError))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.tmp/styles'))
-    // Concatenate and minify styles
-    .pipe($.if('*.css', $.cssnano()))
-    .pipe($.size({title: 'styles'}))
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('app/styles'));
+        'app/styles/**/*.scss'
+      ])
+      .pipe($.sourcemaps.init())
+      //.pipe($.changed('.tmp/styles', {extension: '.css'}))
+      .pipe($.sass({
+        precision: 10,
+        indentedSyntax: true,
+        outputStyle: 'nested',
+        sourceMap: true,
+        sourceComments: 'normal',
+        onError: console.error.bind(console, 'Sass error:')
+      }))
+      .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest('.tmp/styles'))
+      // Concatenate and minify styles
+      //.pipe($.if('*.css', $.csso()))
+      .pipe(gulp.dest('dist/styles'))
+      .pipe(gulp.dest('app/styles'))
+      .pipe($.size({title: 'styles'}));
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
