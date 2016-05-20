@@ -1,8 +1,8 @@
 /**
  * Created by kev on 16-01-06.
  */
-///<reference path="../../../typings/jquery/jquery.d.ts"/>
-define(["require", "exports"], function (require, exports) {
+///<reference path="../../../../../typings/globals/jquery/index.d.ts"/>
+define(["require", "exports", 'jquery'], function (require, exports, $) {
     "use strict";
     var Item = (function () {
         function Item(el, index) {

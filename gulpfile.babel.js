@@ -82,15 +82,17 @@ gulp.task('styles', function () {
     'bb >= 10'
   ];
 
+  var sassGlob = require('gulp-sass-glob');
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-        'app/styles/**/*.scss'
+        'app/scss/main.scss'
       ])
+      .pipe(sassGlob())
       .pipe($.sourcemaps.init())
       //.pipe($.changed('.tmp/styles', {extension: '.css'}))
       .pipe($.sass({
         precision: 10,
-        indentedSyntax: true,
+        indentedSyntax: false,
         outputStyle: 'nested',
         sourceMap: true,
         sourceComments: 'normal',
@@ -98,12 +100,12 @@ gulp.task('styles', function () {
       }))
       .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
       .pipe($.sourcemaps.write())
-      .pipe(gulp.dest('.tmp/styles'))
+      //.pipe(gulp.dest('.tmp/styles'))
       // Concatenate and minify styles
       //.pipe($.if('*.css', $.csso()))
-      .pipe(gulp.dest('dist/styles'))
-      .pipe(gulp.dest('app/styles'))
-      .pipe($.size({title: 'styles'}));
+      //.pipe(gulp.dest('dist/styles'))
+      .pipe(gulp.dest('app/styles'));
+      //.pipe($.size({title: 'styles'}));
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -179,12 +181,12 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app'],
+    server: ['app'],
     port: 3000
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/scss/**/*.scss'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['scripts']);
   gulp.watch(['app/images/**/*'], reload);
 });

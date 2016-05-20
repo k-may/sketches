@@ -1,22 +1,12 @@
-html, body {
+.sketch_cont{
 
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-.sketch_cont {
+html, body {
+  position: relative;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
+  padding: 0px;
+  margin: 0px;
 }
 
 ul {
@@ -43,5 +33,23 @@ ul {
     &:hover {
       background: rgba(238, 238, 238, 0.7);
     }
+
   }
+}
+
+
+
+.sketch_cont {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
 }

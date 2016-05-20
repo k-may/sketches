@@ -1,10 +1,11 @@
 /**
  * Created by kev on 16-01-06.
  */
-///<reference path="../../../typings/jquery/jquery.d.ts"/>
-    
-    
-class Item{
+///<reference path="../../../../../typings/globals/jquery/index.d.ts"/>
+
+import $ = require('jquery');
+
+class Item {
 
     el:HTMLDivElement;
     $el:any;
@@ -13,17 +14,17 @@ class Item{
     width:number;
     height:number;
 
-    constructor(el:HTMLDivElement, index:number){
+    constructor(el:HTMLDivElement, index:number) {
         this.el = el;
         this.$el = $(el);
         this.index = index;
     }
 
-    draw(){
+    draw() {
 
     }
 
-    resize(windowWidth:number, windowHeight:number){
+    resize(windowWidth:number, windowHeight:number) {
 
         this.width = windowWidth;
         this.height = windowHeight;

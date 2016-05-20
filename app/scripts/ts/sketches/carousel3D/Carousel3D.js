@@ -5,9 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 define(["require", "exports", "../../common/BaseSketch", "./Item", "../../utils/AnimUtils"], function (require, exports, BaseSketch, Item, AnimUtils) {
     "use strict";
-    /**
-     * Created by kev on 16-01-06.
-     */
     ///<reference path="../../../../../typings/globals/require/index.d.ts"/>
     var Carousel3D = (function (_super) {
         __extends(Carousel3D, _super);

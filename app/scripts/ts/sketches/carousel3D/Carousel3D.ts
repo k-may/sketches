@@ -4,7 +4,7 @@ import AnimUtils = require("../../utils/AnimUtils");
 /**
  * Created by kev on 16-01-06.
  */
-
+declare var require;
     ///<reference path="../../../../../typings/globals/require/index.d.ts"/>
 
 class Carousel3D extends BaseSketch {
