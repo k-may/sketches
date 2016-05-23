@@ -33,7 +33,8 @@ require.config({
 		'underscore' : 'components/underscore/underscore-min',
 		'modernizr' : 'components/modernizr/bin/modernizr',
 		'handlebars' : 'components/handlebars/handlebars.min',
-		'text' : 'components/text/text'
+		'text' : 'components/text/text',
+    'three' : 'libs/three.min.js'
 	},
 
 	shim:{
