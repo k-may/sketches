@@ -88,4 +88,8 @@ export class BaseSketch {
     remove() {
         this.$el.remove();
     }
+
+    mouseMove(e){
+
+    }
 }

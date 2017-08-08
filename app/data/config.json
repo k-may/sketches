@@ -1,10 +1,22 @@
 {
-  "sketches" : {
-    "Triangles2D" : {
-      "View" : "triangles/Triangles2D"
+  "sketches": {
+    "TrianglesTransitions": {
+      "View": "TrianglesTransitionSketch/TrianglesTransitionSketch"
     },
-    "Carousel3D" : {
-      "View" : "carousel3D/Carousel3D"
+    "Triangles2D": {
+      "View": "triangles/Triangles2D"
+    },
+    "Carousel3D": {
+      "View": "carousel3D/Carousel3D"
+    },
+    "Carousel2D":{
+      "View" : "CarouselSketch/Sketch"
+    },
+    "OrthoPanelsSketch":{
+      "View" : "OrthoPanelsGLSketch/Sketch"
+    },
+    "Running Pipes" : {
+      "View" : "RunningPipesSketch/Sketch"
     }
   }
 }

@@ -70,6 +70,8 @@ define(["require", "exports"], function (require, exports) {
         BaseSketch.prototype.remove = function () {
             this.$el.remove();
         };
+        BaseSketch.prototype.mouseMove = function (e) {
+        };
         return BaseSketch;
     }());
     exports.BaseSketch = BaseSketch;

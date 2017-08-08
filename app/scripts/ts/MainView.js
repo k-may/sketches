@@ -50,7 +50,10 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
                     return;
                 }
                 $('HTML').removeClass(this.sketch.id);
-                this.sketch.remove();
+                if (this.sketch.remove)
+                    this.sketch.remove();
+                else
+                    this.sketch.$el.detach();
             }
             var self = this;
             this.getClass(sketchId).then(function (sketch) {
@@ -84,13 +87,19 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
                 else {
                     var path = "../../scripts/ts/sketches/" + View + ".js";
                     require([path], function (exports) {
-                        var sketch = new exports[sketchId]();
+                        var Class = exports;
+                        //make it backwards compatible with old javascript sketches...
+                        if (typeof Class != "function")
+                            Class = exports.hasOwnProperty(sketchId) ? exports[sketchId] : exports['Sketch'];
+                        var sketch = new Class();
                         resolve(sketch);
                     });
                 }
             });
         };
         MainView.prototype.onMouseMove = function (e) {
+            if (this.sketch && this.sketch.mouseMove)
+                this.sketch.mouseMove(e);
         };
         MainView.prototype.draw = function (time) {
             if (!this.loaded) {
