@@ -14,9 +14,9 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
     /**
      * Created by kev on 2016-05-18.
      */
-    var Triangles2D = (function (_super) {
-        __extends(Triangles2D, _super);
-        function Triangles2D() {
+    var Sketch = (function (_super) {
+        __extends(Sketch, _super);
+        function Sketch() {
             var _this = _super.call(this) || this;
             _this.windowWidth = 0;
             _this.windowHeight = 0;
@@ -43,16 +43,16 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
             _this.buffer2.canvas.style.opacity = "0.7";
             return _this;
         }
-        Triangles2D.prototype.addBuffer = function (b) {
+        Sketch.prototype.addBuffer = function (b) {
             this.el.appendChild(b.canvas);
             b.canvas.style.position = "absolute";
             b.canvas.style.top = "0px";
         };
-        Triangles2D.prototype.draw = function (time) {
+        Sketch.prototype.draw = function (time) {
             this.drawBuffer1();
             this.drawBuffer2();
         };
-        Triangles2D.prototype.drawBuffer1 = function () {
+        Sketch.prototype.drawBuffer1 = function () {
             this.buffer1.ctx.globalAlpha = 0.006;
             this.buffer1.ctx.fillStyle = "#000000";
             this.buffer1.ctx.fillRect(0, 0, this.buffer1.width, this.buffer1.height);
@@ -73,7 +73,7 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
                 this.buffer1.ctx.restore();
             }
         };
-        Triangles2D.prototype.drawBuffer2 = function () {
+        Sketch.prototype.drawBuffer2 = function () {
             this.buffer2.ctx.globalAlpha = 0.006;
             this.buffer2.ctx.fillStyle = "#000000";
             this.buffer2.ctx.fillRect(0, 0, this.buffer2.width, this.buffer2.height);
@@ -95,7 +95,7 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
                 this.buffer2.ctx.restore();
             }
         };
-        Triangles2D.prototype.resize = function (windowWidth, windowHeight) {
+        Sketch.prototype.resize = function (windowWidth, windowHeight) {
             this.windowWidth = windowWidth;
             this.windowHeight = windowHeight;
             this.buffer1.resize(windowWidth, windowHeight);
@@ -110,8 +110,8 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
                 this.cols2[i].init();
             }
         };
-        return Triangles2D;
+        return Sketch;
     }(BaseSketch_1.BaseSketch));
-    exports.Triangles2D = Triangles2D;
+    exports.Sketch = Sketch;
 });
-//# sourceMappingURL=Triangles2D.js.map
+//# sourceMappingURL=sketch.js.map

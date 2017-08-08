@@ -25,9 +25,9 @@ define(["require", "exports", "../../common/BaseSketch", "./Item", "../../utils/
             var fileref = document.createElement("link");
             fileref.rel = "stylesheet";
             fileref.type = "text/css";
-            fileref.href = "styles/carousel3d.css";
+            fileref.href = "styles/carouselLeap.css";
             document.getElementsByTagName("head")[0].appendChild(fileref);
-            require(['text!ts/sketches/carousel3D/carousel3D.html'], function (html) {
+            require(['text!ts/sketches/carouselLeap/carousel3D.html'], function (html) {
                 _this.el.innerHTML = html;
                 _this.container = _this.el.getElementsByClassName('container')[0];
                 _this.carousel = _this.el.getElementsByClassName('carousel')[0];

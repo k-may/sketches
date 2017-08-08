@@ -5,8 +5,8 @@ define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var BaseSketch = (function () {
+        //-----------------------------------------------------------
         function BaseSketch() {
-            this._scrollHeight = -1;
             this._windowWidth = -1;
             this._windowHeight = -1;
             this._scrollRatio = 0.0;
@@ -16,12 +16,10 @@ define(["require", "exports"], function (require, exports) {
             this.el.setAttribute('class', 'sketch_cont');
             this.$el = $(this.el);
         }
+        //-----------------------------------------------------------
         BaseSketch.prototype.resize = function (w, h) {
             this._windowWidth = w;
             this._windowHeight = h;
-            this._invalidated = true;
-        };
-        BaseSketch.prototype.invalidate = function () {
             this._invalidated = true;
         };
         BaseSketch.prototype.toggle = function () {
@@ -71,6 +69,12 @@ define(["require", "exports"], function (require, exports) {
             this.$el.remove();
         };
         BaseSketch.prototype.mouseMove = function (e) {
+        };
+        BaseSketch.prototype.onClick = function (e) {
+        };
+        //------------------------------------------------
+        BaseSketch.prototype.invalidate = function () {
+            this._invalidated = true;
         };
         return BaseSketch;
     }());

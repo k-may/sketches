@@ -4,92 +4,99 @@
 
 export class BaseSketch {
 
-    $el:any;
-    el:HTMLElement;
+  $el: any;
+  el: HTMLElement;
 
-    _scrollHeight:number = -1;
-    _mousePos:any;
-    _tween:TWEEN.Tween;
-    _windowWidth:number = -1;
-    _windowHeight:number = -1;
-    _scrollRatio:number = 0.0;
-    _invalidated:boolean = false;
-    _animDuration:number = 1000;
+  _tween: TWEEN.Tween;
+  _windowWidth: number = -1;
+  _windowHeight: number = -1;
+  _scrollRatio: number = 0.0;
+  _invalidated: boolean = false;
+  _animDuration: number = 1000;
 
-    id:string;
+  id: string;
 
-    constructor() {
-        this.el = document.createElement("div");
-        this.el.setAttribute('class', 'sketch_cont');
-        this.$el = $(this.el);
+  //-----------------------------------------------------------
+
+  constructor() {
+    this.el = document.createElement("div");
+    this.el.setAttribute('class', 'sketch_cont');
+    this.$el = $(this.el);
+  }
+
+  //-----------------------------------------------------------
+
+  public resize(w: number, h: number) {
+    this._windowWidth = w;
+    this._windowHeight = h;
+    this._invalidated = true;
+  }
+
+  public toggle() {
+    if (this._scrollRatio < 0.5) {
+      this.animateIn();
+    } else {
+      this.animateOut();
+    }
+  }
+
+  public animateIn() {
+
+    if (this._tween) {
+      this._tween.stop();
     }
 
-    resize(w:number, h:number) {
-        this._windowWidth = w;
-        this._windowHeight = h;
-        this._invalidated = true;
+    this._tween = new TWEEN.Tween({value: this._scrollRatio})
+      .to({value: 1}, this._animDuration)
+      .onUpdate((obj) => {
+        this.setScrollRatio(obj.value);
+      })
+      .start();
+  }
+
+  public animateOut() {
+    if (this._tween) {
+      this._tween.stop();
     }
 
-    private invalidate() {
-        this._invalidated = true;
+    this._tween = new TWEEN.Tween({value: this._scrollRatio})
+      .to({value: 0}, this._animDuration)
+      .onUpdate((obj) => {
+        this.setScrollRatio(obj.value);
+      })
+      .start();
+  }
+
+  public setScrollRatio(ratio: number) {
+    this._scrollRatio = ratio;
+    this.invalidate();
+  }
+
+  public draw(time?: number): any {
+
+    if (this._invalidated) {
+
+      this._invalidated = false;
+      return true;
     }
 
-    toggle() {
-        if (this._scrollRatio < 0.5) {
-            this.animateIn();
-        } else {
-            this.animateOut();
-        }
-    }
+    return false;
+  }
 
-    animateIn() {
+  public remove() {
+    this.$el.remove();
+  }
 
-        if (this._tween) {
-            this._tween.stop();
-        }
+  public mouseMove(e) {
+  }
 
-        this._tween = new TWEEN.Tween({value: this._scrollRatio})
-            .to({value: 1}, this._animDuration)
-            .onUpdate((obj) => {
-                this.setScrollRatio(obj.value);
-            })
-            .start();
-    }
+  public onClick(e) {
+  }
 
-    animateOut() {
-        if (this._tween) {
-            this._tween.stop();
-        }
+  //------------------------------------------------
 
-        this._tween = new TWEEN.Tween({value: this._scrollRatio})
-            .to({value: 0}, this._animDuration)
-            .onUpdate((obj) => {
-                this.setScrollRatio(obj.value);
-            })
-            .start();
-    }
+  private invalidate() {
+    this._invalidated = true;
+  }
 
-    setScrollRatio(ratio:number) {
-        this._scrollRatio = ratio;
-        this.invalidate();
-    }
-
-    draw(time?:number) :any{
-
-        if (this._invalidated) {
-
-            this._invalidated = false;
-            return true;
-        }
-
-        return false;
-    }
-
-    remove() {
-        this.$el.remove();
-    }
-
-    mouseMove(e){
-
-    }
 }

@@ -1,8 +1,12 @@
-import {BaseSketch} from "../../common/BaseSketch";
-import {Item} from "./Item";
-import {AnimUtils} from "../../utils/anim_utils";
+import {Item} from "./item";
+import {BaseSketch} from "../../../common/BaseSketch";
+import {AnimUtils} from "../../../utils/anim_utils";
+/**
+ * Created by kev on 16-01-06.
+ */
 
-export class Carousel3D extends BaseSketch {
+
+export class Sketch extends BaseSketch {
 
   items: Item[];
   container: HTMLDivElement;
@@ -11,18 +15,17 @@ export class Carousel3D extends BaseSketch {
   windowWidth: number = 0;
   windowHeight: number = 0;
 
-  itemWidth: number;
-  itemHeight: number;
-  itemAngle: number = 40;
+  currentRads: number = 0;
+
+  itemWidth: number = 500;
+  itemAngle: number = 90;
 
   currentItem: Item;
 
   currentAngle: number = 0;
   targetAngle: number = 0;
 
-  loaded: boolean = false;
-
-  //-----------------------------------------------------
+  loaded : boolean = false;
 
   constructor() {
     super();
@@ -31,9 +34,9 @@ export class Carousel3D extends BaseSketch {
     fileref.rel = "stylesheet";
     fileref.type = "text/css";
     fileref.href = "styles/carousel3d.css";
-    document.getElementsByTagName("head")[0].appendChild(fileref)
+    document.getElementsByTagName("head")[0].appendChild(fileref);
 
-    require(['text!ts/sketches/carousel3D/carousel3D.html'], (html) => {
+    require(['text!ts/sketches/CubeCarouselSketch/carousel.html'], (html) => {
 
       this.el.innerHTML = html;
 
@@ -51,23 +54,27 @@ export class Carousel3D extends BaseSketch {
         this.onNext(evt);
       });
 
-      this.resize(window.innerWidth, window.innerHeight);
+      window.addEventListener("keydown", evt => {
+        if (evt.key == "ArrowLeft")
+          this.targetAngle += this.itemAngle * -1;
+        else if (evt.key == "ArrowRight")
+          this.targetAngle += this.itemAngle;
+      });
 
       this.loaded = true;
     });
   }
 
-  //-----------------------------------------------------
-
   onNext(evt: any) {
     var direction = evt.detail.direction;
+
     //update angle here!
     this.targetAngle += this.itemAngle * -direction;
   }
 
   draw() {
 
-    if (!this.loaded)
+    if(!this.loaded)
       return;
 
     var diff = this.targetAngle - this.currentAngle;
@@ -82,41 +89,30 @@ export class Carousel3D extends BaseSketch {
 
     //rotate the carousel
     var cRot = 10;
-    var cYOffset = this.itemWidth * Math.tan(cRot * Math.PI / 180);
+    var cYOffset = 0;
 
     //determine z for items
-    var z = ((this.itemWidth + 100) / 2) / Math.tan(rads / 2);
-    var transformMatrix = AnimUtils.GetTranslationMatrix(-this.itemWidth / 2, cYOffset, -z);
-    var rotationMatrix = AnimUtils.GetRotationMatrix(3, 0, 0);
+    var z = window.innerWidth / Math.tan(rads / 2);
+    var transformMatrix = AnimUtils.GetTranslationMatrix(-window.innerWidth / 2, 0, -z);//cYOffset, -z);
+    var rotationMatrix = AnimUtils.GetRotationMatrix(0, 0, 0);
 
     AnimUtils.SetTransformMatrix(this.carousel, [rotationMatrix, transformMatrix]);
 
     //apply transform to each
     this.items.forEach(item => {
-      var r = this.itemAngle * item.index + this.itemAngle / 2 + this.currentAngle;
+      var r = this.itemAngle * item.index + this.currentAngle;
 
       var rotation = AnimUtils.GetRotationMatrix(0, r, 0);
       var translation = AnimUtils.GetTranslationMatrix(0, 0, -z);
-      var rotation2 = AnimUtils.GetRotationMatrix(0, 0, cRot);
-      AnimUtils.SetTransformMatrix(item.el, [rotation, translation, rotation2]);
+      AnimUtils.SetTransformMatrix(item.el, [rotation, translation]);
 
       item.draw();
     });
   }
 
   resize(windowWidth, windowHeight) {
-
-    if (!this.loaded)
-      return;
-
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
-
-    this.itemWidth = windowWidth - 400;
-    this.itemHeight = windowHeight - 400;
-    this.items.forEach(item => {
-      item.resize(this.itemWidth, this.itemHeight);//windowWidth, windowHeight);
-    });
   }
 
   setCurrentItem(item: Item) {
@@ -129,4 +125,3 @@ export class Carousel3D extends BaseSketch {
     this.currentItem.$el.addClass("active");
   }
 }
-

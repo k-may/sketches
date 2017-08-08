@@ -6,7 +6,7 @@ import {CanvasBuffer2D} from "../../common/CanvasBuffer2D";
  * Created by kev on 2016-05-18.
  */
 
-export class Triangles2D extends BaseSketch {
+export class Sketch extends BaseSketch {
 
     windowWidth:number = 0;
     windowHeight:number = 0;

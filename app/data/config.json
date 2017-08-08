@@ -1,28 +1,37 @@
 {
   "sketches": {
-    "TrianglesTransitions": {
+    "Triangles Pattern 1": {
+      "View": "BgTexturesSketch/js/sketch"
+    },
+    "Triangles Pattern 2": {
       "View": "TrianglesTransitionSketch/TrianglesTransitionSketch"
     },
-    "Triangles2D": {
-      "View": "triangles/Triangles2D"
+    "Triangles Pattern 3": {
+      "View": "triangles/sketch"
     },
-    "Carousel3D": {
-      "View": "carousel3D/Carousel3D"
+    "Carousel Leap": {
+      "View": "carouselLeap/Carousel3D"
     },
-    "Carousel2D":{
-      "View" : "CarouselSketch/Sketch"
+    "Carousel 2D": {
+      "View": "CarouselSketch/Sketch"
     },
-    "OrthoPanelsSketch":{
-      "View" : "OrthoPanelsGLSketch/Sketch"
+    "Carousel 3D": {
+      "View": "CubeCarouselSketch/js/sketch"
     },
-    "Running Pipes" : {
-      "View" : "RunningPipesSketch/Sketch"
+    "OrthoPanelsSketch": {
+      "View": "OrthoPanelsGLSketch/Sketch"
     },
-    "MeshTexture" : {
-      "View" : "StretchMesh/mesh_sketch"
+    "Running Pipes": {
+      "View": "RunningPipesSketch/Sketch"
     },
-    "Doodles GL" : {
-      "View" : "SpritesGLSketch/js/sketch"
+    "MeshTexture": {
+      "View": "StretchMesh/mesh_sketch"
+    },
+    "Doodles GL": {
+      "View": "SpritesGLSketch/js/sketch"
+    },
+    "Button 1" : {
+      "View" : "CloseButtonSketch/js/sketch"
     }
   }
 }

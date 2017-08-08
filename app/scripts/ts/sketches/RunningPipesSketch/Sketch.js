@@ -179,7 +179,7 @@ define([""], function () {
         var distance = 0;
         var attemps = 0;
         while (distance < 10 && attemps++ < 10) {
-          direction = this.resetDirection(location, collision, avail);
+          direction = this.resetDirection(location, collision, ["left", "up", "right", "down"]);
           distance = this.resetDistance(location, direction);
         }
 
@@ -257,6 +257,7 @@ define([""], function () {
         }
         return direction;
       }
+
 
     };
 

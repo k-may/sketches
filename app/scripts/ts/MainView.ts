@@ -44,6 +44,8 @@ export class MainView {
   }
 
   onClick(e: any) {
+    if(this.sketch && this.sketch.onClick)
+      this.sketch.onClick(e);
   }
 
   onResize(e: any) {

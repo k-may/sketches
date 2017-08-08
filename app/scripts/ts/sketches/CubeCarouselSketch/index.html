@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            left: 50%;
+        }
+
+        .item {
+            position: absolute;
+            width: 500px;
+            height: 210px;
+        }
+
+        .item__child{
+            width:100%;
+            height:200px;
+            margin-top:10px;
+        }
+
+        .item:nth-child(1) .item__child {
+            background-color: #EF9A9A;
+        }
+
+        .item:nth-child(2) .item__child {
+            background-color: #F48FB1;
+        }
+
+        .item:nth-child(3) .item__child {
+            background-color: #CE93D8;
+        }
+
+        .item:nth-child(4) .item__child {
+            background-color: #B39DDB;
+        }
+
+        .console {
+            position: fixed;
+            width: 300px;
+            border: solid 1px #E6DDDD;
+            border-radius: 3px;
+            background-color: rgba(238, 238, 238, 0.52);
+            right: 7px;
+            top: 7px;
+            z-index: 1;
+            padding: 2px 4px;
+            font-family: sans-serif;
+            font-size: 10px;
+            color: #6B6868;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="carousel">
+        <div class="item">
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+        </div>
+        <div class="item">
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+        </div>
+        <div class="item">
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+        </div>
+        <div class="item">
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+            <div class="item__child"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../../app/components/sylvester/sylvester.js"></script>
+<script src="../../app/components/jquery/dist/jquery.js"></script>
+<script src="../../app/components/modernizr/modernizr.js"></script>
+
+<script src="../../app/components/requirejs/require.js" data-main="js/main"></script>
+</body>
+</html>

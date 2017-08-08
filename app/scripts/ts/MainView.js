@@ -33,6 +33,8 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
             this.onHashChange(null);
         };
         MainView.prototype.onClick = function (e) {
+            if (this.sketch && this.sketch.onClick)
+                this.sketch.onClick(e);
         };
         MainView.prototype.onResize = function (e) {
             if (this.sketch) {
