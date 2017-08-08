@@ -1,27 +1,12 @@
 /**
  * Created by kev on 16-02-08.
  */
-
-//https://stackoverflow.com/questions/30358323/require-js-not-loading-three-js
-define("three-glue", ["three"], function (three) {
-  window.THREE = three;
-  return three;
-});
-
 require.config({
   baseUrl: 'js/',
   paths: {
     'tweenjs' : '../../../app/components/tweenjs/src/Tween',
     'three': '../../../app/components/threejs/build/three.min',
     'underscore' : '../../../app/components/underscore/underscore-min'
-  },
-  map: {
-    '*': {
-      three: 'three-glue'
-    },
-    'three-glue': {
-      three: 'three'
-    }
   },
   shim: {
     three: {
@@ -37,7 +22,7 @@ require.config({
 
 });
 
-require(['underscore', 'tweenjs', 'three', 'app/scripts/ts/sketches/OrthoPanelsGLSketch/sketch'], function (_, TWEEN, THREE, exports) {
+require(['underscore', 'tweenjs', 'three','sketch'], function (_, TWEEN, THREE, exports) {
 
   //fix exports..
   window.THREE = THREE;

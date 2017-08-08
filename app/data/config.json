@@ -20,6 +20,9 @@
     },
     "MeshTexture" : {
       "View" : "StretchMesh/mesh_sketch"
+    },
+    "Doodles GL" : {
+      "View" : "SpritesGLSketch/js/sketch"
     }
   }
 }
