@@ -10,6 +10,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 define(["require", "exports", "./sketch"], function (require, exports, sketch_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var MeshTexture = (function (_super) {
         __extends(MeshTexture, _super);
         function MeshTexture(canvas, sketch) {
@@ -31,6 +32,7 @@ define(["require", "exports", "./sketch"], function (require, exports, sketch_1)
             this.renderer = new THREE.WebGLRenderer({ alpha: true });
             this.renderer.setClearColor("#ffffff");
             this.canvas = this.renderer.domElement;
+            this.el.appendChild(this.canvas);
             this.camera = new THREE.Camera();
             this.camera.position.z = 1;
             this.scene = new THREE.Scene();
@@ -51,7 +53,7 @@ define(["require", "exports", "./sketch"], function (require, exports, sketch_1)
                 this.geometry.faceVertexUvs[0].push([new THREE.Vector2(left + uvWidth, 0), new THREE.Vector2(left + uvWidth, 1), new THREE.Vector2(left, 1)]);
             }
             this.geometry.computeFaceNormals();
-            var map = THREE.ImageUtils.loadTexture("img/red_bar.png");
+            var map = new THREE.TextureLoader().load("scripts/ts/sketches/StretchMesh/img/red_bar.png");
             map.minFilter = THREE.LinearFilter;
             this.material = new THREE.MeshBasicMaterial({
                 map: map
@@ -76,6 +78,6 @@ define(["require", "exports", "./sketch"], function (require, exports, sketch_1)
         };
         return MeshTexture;
     }(sketch_1.Sketch));
-    return MeshTexture;
+    exports.MeshTexture = MeshTexture;
 });
 //# sourceMappingURL=mesh_sketch.js.map

@@ -13,7 +13,7 @@ require.config({
   }
 });
 
-require(['three','../ts/mesh_sketch'], function (THREE, MeshTexture) {
+require(['three','../mesh_sketch'], function (THREE, MeshTexture) {
   var sketch;
   window.THREE = THREE;
   console.log(THREE);

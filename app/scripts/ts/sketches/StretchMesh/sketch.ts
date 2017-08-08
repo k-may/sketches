@@ -1,5 +1,6 @@
-import {BaseSketch} from "../../ts/BaseSketch";
 import Vector2 = THREE.Vector2;
+import {BaseSketch} from "../../common/BaseSketch";
+import {CanvasBuffer2D} from "../../common/CanvasBuffer2D";
 
 /**
  * Created by kev on 15-10-26.
@@ -11,6 +12,8 @@ export class Sketch extends BaseSketch {
     speed:THREE.Vector2;
     acceleration:THREE.Vector2;
 
+    buffer : CanvasBuffer2D;
+
     body:THREE.Vector2[];
     triangles:any[];
 
@@ -19,6 +22,9 @@ export class Sketch extends BaseSketch {
     constructor() {
 
         super();
+
+        this.buffer = new CanvasBuffer2D();
+        this.buffer.resize(window.innerWidth, window.innerHeight);
 
         this.headPos = new THREE.Vector2(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
         this.body = [];

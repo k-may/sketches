@@ -17,6 +17,9 @@
     },
     "Running Pipes" : {
       "View" : "RunningPipesSketch/Sketch"
+    },
+    "MeshTexture" : {
+      "View" : "StretchMesh/mesh_sketch"
     }
   }
 }
