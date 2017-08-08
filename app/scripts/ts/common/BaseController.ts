@@ -1,19 +1,12 @@
-/**
- * Created by kev on 2016-05-19.
- */
-import IEvent = require("../events/IEvent");
-import EventHandler = require("../events/EventHandler");
-/**
- * Created by kev on 16-01-06.
- */
 
-class BaseController{
+import {EventHandler, IEvent} from "../events/EventHandler";
+
+export class BaseController{
 
     private eventQueue:IEvent[] = [];
     private eventHandlers:any = {};
 
     constructor(){
-
     }
 
     dispatch(event:IEvent) {
@@ -56,5 +49,3 @@ class BaseController{
         this.digestEventQueue();
     }
 }
-
-export = BaseController;

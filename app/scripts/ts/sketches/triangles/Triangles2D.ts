@@ -1,12 +1,12 @@
-import Col = require("./Col");
-import CanvasBuffer2D = require("../../common/CanvasBuffer2D");
-import BaseSketch = require("../../common/BaseSketch");
 
+import {BaseSketch} from "../../common/BaseSketch";
+import {Col} from "./Col";
+import {CanvasBuffer2D} from "../../common/CanvasBuffer2D";
 /**
  * Created by kev on 2016-05-18.
  */
 
-class Triangles2D extends BaseSketch {
+export class Triangles2D extends BaseSketch {
 
     windowWidth:number = 0;
     windowHeight:number = 0;
@@ -138,10 +138,5 @@ class Triangles2D extends BaseSketch {
             this.cols2[i].size = this.res;
             this.cols2[i].init();
         }
-
     }
-
-
 }
-
-export = Triangles2D;

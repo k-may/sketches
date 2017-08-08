@@ -2,7 +2,7 @@
  * Created by kev on 2016-05-18.
  */
 ///<reference path="../../../../typings/globals/three/index.d.ts"/>
-define(["require", "exports", "three", "./three/UniformF", "./three/UniformV2", "../utils/LoadUtils", 'underscore'], function (require, exports, THREE, UniformF, UniformV2, LoadUtils, _) {
+define(["require", "exports", "three", "./three/UniformF", "./three/UniformV2", "../utils/LoadUtils", "underscore"], function (require, exports, THREE, UniformF, UniformV2, LoadUtils, _) {
     "use strict";
     var ShaderData = (function () {
         function ShaderData(fragmentID, vertexID, uniforms) {

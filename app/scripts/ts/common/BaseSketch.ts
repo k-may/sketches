@@ -1,13 +1,8 @@
 /**
  * Created by kev on 2016-05-18.
  */
-///<reference path="../../../../typings/globals/tween.js/index.d.ts"/>
-///<reference path="../../../../typings/globals/jquery/index.d.ts"/>
 
-import TWEEN = require('tweenjs');
-import $ = require('jquery');
-
-class BaseSketch {
+export class BaseSketch {
 
     $el:any;
     el:HTMLElement;
@@ -93,7 +88,4 @@ class BaseSketch {
     remove() {
         this.$el.remove();
     }
-
 }
-
-export = BaseSketch;

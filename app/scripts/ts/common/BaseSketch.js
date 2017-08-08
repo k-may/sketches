@@ -1,10 +1,9 @@
 /**
  * Created by kev on 2016-05-18.
  */
-///<reference path="../../../../typings/globals/tween.js/index.d.ts"/>
-///<reference path="../../../../typings/globals/jquery/index.d.ts"/>
-define(["require", "exports", 'tweenjs', 'jquery'], function (require, exports, TWEEN, $) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var BaseSketch = (function () {
         function BaseSketch() {
             this._scrollHeight = -1;
@@ -73,6 +72,6 @@ define(["require", "exports", 'tweenjs', 'jquery'], function (require, exports, 
         };
         return BaseSketch;
     }());
-    return BaseSketch;
+    exports.BaseSketch = BaseSketch;
 });
 //# sourceMappingURL=BaseSketch.js.map

@@ -1,15 +1,8 @@
-/**
- * Created by kev on 2016-05-18.
- */
 
-///<reference path="../../../typings/globals/require/index.d.ts"/>
-///<reference path="../../../typings/globals/es6-shim/index.d.ts"/>
+import {BaseSketch} from "./common/BaseSketch";
+import {MenuView} from "./views/MenuView";
 
-import $ = require('jquery');
-import BaseSketch = require("./common/BaseSketch");
-import MenuView = require("./views/MenuView");
-
-class MainView {
+export class MainView {
 
     sketch:BaseSketch;
     expander:any;
@@ -20,8 +13,6 @@ class MainView {
     loaded:boolean = false;
 
     constructor() {
-        console.log("here we go again!");
-
         $.getJSON('data/config.json', (data) => {
             console.log(data);
             this.loaded = true;
@@ -51,15 +42,9 @@ class MainView {
         window.onmousemove = this.onMouseMove.bind(this);
 
         this.onHashChange(null);
-
-    }
-
-    createMenu() {
-
     }
 
     onClick(e:any) {
-        
     }
 
     onResize(e:any) {
@@ -69,7 +54,6 @@ class MainView {
     }
 
     onScroll(e:any) {
-
     }
 
     onHashChange(e:any) {
@@ -90,7 +74,6 @@ class MainView {
             sketch.id = sketchId;
             self.addSketch(sketch);
         });
-        
     }
 
     addSketch(sketch:BaseSketch){
@@ -112,7 +95,7 @@ class MainView {
         this.onResize(null);
         this.onScroll(null);
     }
-    
+
     getClass(sketchId:string):Promise<any> {
 
         var self = this;
@@ -122,8 +105,8 @@ class MainView {
                 resolve(self.cachedViews[sketchId]);
             } else {
                 var path = "../../scripts/ts/sketches/" + View + ".js";
-                require([path], function (Class) {
-                    var sketch = new Class();
+                require([path], exports => {
+                    var sketch = new exports[sketchId]();
                     resolve(sketch);
                 });
             }
@@ -132,7 +115,6 @@ class MainView {
     }
 
     onMouseMove(e:any) {
-
     }
 
     draw(time:number) {
@@ -144,10 +126,6 @@ class MainView {
         if (this.sketch) {
             this.sketch.draw(time);
         }
-
     }
 
-
 }
-
-export = MainView;

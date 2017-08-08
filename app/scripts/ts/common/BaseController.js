@@ -1,8 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    /**
-     * Created by kev on 16-01-06.
-     */
+    Object.defineProperty(exports, "__esModule", { value: true });
     var BaseController = (function () {
         function BaseController() {
             this.eventQueue = [];
@@ -42,6 +40,6 @@ define(["require", "exports"], function (require, exports) {
         };
         return BaseController;
     }());
-    return BaseController;
+    exports.BaseController = BaseController;
 });
 //# sourceMappingURL=BaseController.js.map

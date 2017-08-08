@@ -22,6 +22,7 @@
     "jQuery": "^2.2.3",
     "modernizr": "^3.3.1",
     "es6-shim": "^0.35.1",
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.5",
+    "text": "^2.0.15"
   }
 }

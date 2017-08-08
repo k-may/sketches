@@ -1,9 +1,11 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Created by kev on 16-02-16.
      */
     var Col = (function () {
+        //----------------------------------------------------------
         function Col(size) {
             this.complete = false;
             this.ratio = 0;
@@ -13,6 +15,7 @@ define(["require", "exports"], function (require, exports) {
             this.speed = 0.1; //0.5 + Math.random() * 0.2;
             this.init();
         }
+        //----------------------------------------------------------
         Col.prototype.init = function () {
             this.dest = {
                 x: 0,
@@ -181,6 +184,6 @@ define(["require", "exports"], function (require, exports) {
         };
         return Col;
     }());
-    return Col;
+    exports.Col = Col;
 });
 //# sourceMappingURL=Col.js.map

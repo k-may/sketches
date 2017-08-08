@@ -1,11 +1,5 @@
-/**
- * Created by kev on 16-01-06.
- */
-///<reference path="../../../../../typings/globals/jquery/index.d.ts"/>
 
-import $ = require('jquery');
-
-class Item {
+export class Item {
 
     el:HTMLDivElement;
     $el:any;
@@ -21,7 +15,6 @@ class Item {
     }
 
     draw() {
-
     }
 
     resize(windowWidth:number, windowHeight:number) {
@@ -32,8 +25,4 @@ class Item {
         this.$el.width(windowWidth);
         this.$el.height(windowHeight);
     }
-
-
 }
-
-export = Item;

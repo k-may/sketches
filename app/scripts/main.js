@@ -43,7 +43,10 @@ require.config({
 		},
 		'tweenjs' : {
 			'exports' : 'TWEEN'
-		}
+		},
+    'jquery' : {
+		  'exports' : "$"
+    }
 	},
 
 	waitSeconds:0
@@ -55,8 +58,9 @@ define("modernizr",function () {
 });
 
 //# Start loading main entrypoint
-require(["ts/MainView", "tweenjs"],function (MainView, TWEEN) {
-	var mainView = new MainView();
+require(["jquery", "ts/MainView", "tweenjs"],function ($, exports, TWEEN) {
+
+	var mainView = new exports.MainView();
 
 	function draw(){
 		window.requestAnimationFrame(draw);

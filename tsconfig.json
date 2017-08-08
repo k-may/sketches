@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "removeComments": true,
-    "sourceMap": true,
     "module": "amd",
-    "target": "es5"
+    "target": "es5",
+    "sourceMap": true,
+    "moduleResolution": "classic",
+    "lib" : ["es2015", "es2015.iterable", "dom"]
   },
-  "files" : [
-    "./typings/index.d.ts",
-    "./app/scripts/*.ts"
+  "exclude": [
+    "node_modules",
+    "app/components",
+    "dist",
+    "design"
   ]
 }

@@ -1,7 +1,7 @@
 /**
  * Created by kev on 2016-05-18.
  */
-class CanvasBuffer2D {
+export class CanvasBuffer2D {
 
     canvas:HTMLCanvasElement;
     ctx:CanvasRenderingContext2D;
@@ -29,7 +29,4 @@ class CanvasBuffer2D {
         this.ctx.fillStyle = color;
         this.ctx.fillRect(0, 0, this.width, this.height);
     }
-
 }
-
-export = CanvasBuffer2D;

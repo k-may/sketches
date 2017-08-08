@@ -1,9 +1,6 @@
-/**
- * Created by kev on 16-01-06.
- */
-///<reference path="../../../../../typings/globals/jquery/index.d.ts"/>
-define(["require", "exports", 'jquery'], function (require, exports, $) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Item = (function () {
         function Item(el, index) {
             this.el = el;
@@ -20,6 +17,6 @@ define(["require", "exports", 'jquery'], function (require, exports, $) {
         };
         return Item;
     }());
-    return Item;
+    exports.Item = Item;
 });
 //# sourceMappingURL=Item.js.map

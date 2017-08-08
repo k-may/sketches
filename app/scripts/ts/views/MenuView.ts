@@ -1,7 +1,7 @@
 /**
  * Created by kev on 2016-05-19.
  */
-class MenuView{
+export class MenuView{
 
     el : HTMLElement;
 
@@ -9,7 +9,7 @@ class MenuView{
         //create menu
         this.el = document.createElement("ul");
         this.el.setAttribute("class", "menu_cont");
-        
+
         for (var key in sketches) {
             var item = document.createElement("li");
             item.setAttribute("id",key);
@@ -21,8 +21,5 @@ class MenuView{
             //console.log(e);
             location.hash = "#" + (<HTMLElement>e.target).innerHTML;
         };
-
     }
-
 }
-export = MenuView;

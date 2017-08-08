@@ -1,9 +1,8 @@
-/**
- * Created by kev on 2016-05-19.
- */
-import IEvent = require("./IEvent");
+export interface IEvent {
+  eventType : string;
+  dispatch();
+}
 
-interface  EventHandler {
+export interface  EventHandler {
     (event:IEvent) : void;
 }
-export = EventHandler;

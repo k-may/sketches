@@ -1,15 +1,12 @@
-/**
- * Created by kev on 2016-05-18.
- */
-define(["require", "exports", 'jquery', "./views/MenuView"], function (require, exports, $, MenuView) {
+define(["require", "exports", "./views/MenuView"], function (require, exports, MenuView_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var MainView = (function () {
         function MainView() {
             var _this = this;
             this.sketches = {};
             this.cachedViews = {};
             this.loaded = false;
-            console.log("here we go again!");
             $.getJSON('data/config.json', function (data) {
                 console.log(data);
                 _this.loaded = true;
@@ -18,7 +15,7 @@ define(["require", "exports", 'jquery', "./views/MenuView"], function (require, 
             });
         }
         MainView.prototype.start = function () {
-            this.menu = new MenuView(this.sketches);
+            this.menu = new MenuView_1.MenuView(this.sketches);
             document.body.appendChild(this.menu.el);
             for (var key in this.sketches) {
                 this.DEFAULT_SKETCH = key;
@@ -34,8 +31,6 @@ define(["require", "exports", 'jquery', "./views/MenuView"], function (require, 
             window.onhashchange = this.onHashChange.bind(this);
             window.onmousemove = this.onMouseMove.bind(this);
             this.onHashChange(null);
-        };
-        MainView.prototype.createMenu = function () {
         };
         MainView.prototype.onClick = function (e) {
         };
@@ -88,8 +83,8 @@ define(["require", "exports", 'jquery', "./views/MenuView"], function (require, 
                 }
                 else {
                     var path = "../../scripts/ts/sketches/" + View + ".js";
-                    require([path], function (Class) {
-                        var sketch = new Class();
+                    require([path], function (exports) {
+                        var sketch = new exports[sketchId]();
                         resolve(sketch);
                     });
                 }
@@ -107,6 +102,6 @@ define(["require", "exports", 'jquery', "./views/MenuView"], function (require, 
         };
         return MainView;
     }());
-    return MainView;
+    exports.MainView = MainView;
 });
 //# sourceMappingURL=MainView.js.map

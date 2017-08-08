@@ -33,6 +33,8 @@ define(["require", "exports"], function (require, exports) {
                 cssTransformMatrix = this.GetStringTransform3d(translationM);
             }
             else {
+                //doto make this work...
+                //cssTransformMatrix = this.GetStringTranslate2d(pos.x, pos.y);
             }
             el.style[AnimUtils.TRANSFORM_PREFIX] = cssTransformMatrix;
         };
@@ -59,17 +61,20 @@ define(["require", "exports"], function (require, exports) {
                 [1, 0, 0, 0],
                 [0, Math.cos(rX * deg2rad), Math.sin(-rX * deg2rad), 0],
                 [0, Math.sin(rX * deg2rad), Math.cos(rX * deg2rad), 0],
-                [0, 0, 0, 1]]);
+                [0, 0, 0, 1]
+            ]);
             rotationYMatrix = $M([
                 [Math.cos(rY * deg2rad), 0, Math.sin(rY * deg2rad), 0],
                 [0, 1, 0, 0],
                 [Math.sin(-rY * deg2rad), 0, Math.cos(rY * deg2rad), 0],
-                [0, 0, 0, 1]]);
+                [0, 0, 0, 1]
+            ]);
             rotationZMatrix = $M([
                 [Math.cos(rZ * deg2rad), Math.sin(-rZ * deg2rad), 0, 0],
                 [Math.sin(rZ * deg2rad), Math.cos(rZ * deg2rad), 0, 0],
                 [0, 0, 1, 0],
-                [0, 0, 0, 1]]);
+                [0, 0, 0, 1]
+            ]);
             return rotationXMatrix.x(rotationYMatrix).x(rotationZMatrix);
         };
         AnimUtils.GetStringResultMatrix = function (listMatrix) {

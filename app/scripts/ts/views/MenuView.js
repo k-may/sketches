@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Created by kev on 2016-05-19.
      */
@@ -21,6 +22,6 @@ define(["require", "exports"], function (require, exports) {
         }
         return MenuView;
     }());
-    return MenuView;
+    exports.MenuView = MenuView;
 });
 //# sourceMappingURL=MenuView.js.map

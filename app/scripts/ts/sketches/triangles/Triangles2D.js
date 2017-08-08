@@ -1,40 +1,47 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-define(["require", "exports", "./Col", "../../common/CanvasBuffer2D", "../../common/BaseSketch"], function (require, exports, Col, CanvasBuffer2D, BaseSketch) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/CanvasBuffer2D"], function (require, exports, BaseSketch_1, Col_1, CanvasBuffer2D_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Created by kev on 2016-05-18.
      */
     var Triangles2D = (function (_super) {
         __extends(Triangles2D, _super);
         function Triangles2D() {
-            _super.call(this);
-            this.windowWidth = 0;
-            this.windowHeight = 0;
-            this.size = 10;
-            this.res = 50;
+            var _this = _super.call(this) || this;
+            _this.windowWidth = 0;
+            _this.windowHeight = 0;
+            _this.size = 10;
+            _this.res = 50;
             var num = 100;
-            this.cols1 = [];
+            _this.cols1 = [];
             for (var i = 0; i < num; i++) {
-                this.cols1.push(new Col(this.size));
+                _this.cols1.push(new Col_1.Col(_this.size));
             }
-            this.cols2 = [];
+            _this.cols2 = [];
             for (var i = 0; i < num; i++) {
-                this.cols2.push(new Col(this.size));
+                _this.cols2.push(new Col_1.Col(_this.size));
             }
-            this.buffer1 = new CanvasBuffer2D();
-            this.buffer2 = new CanvasBuffer2D();
+            _this.buffer1 = new CanvasBuffer2D_1.CanvasBuffer2D();
+            _this.buffer2 = new CanvasBuffer2D_1.CanvasBuffer2D();
             /*
     
              div.appendChild(this.buffer1.canvas);
              div.appendChild(this.buffer2.canvas);
              */
-            this.addBuffer(this.buffer1);
-            this.addBuffer(this.buffer2);
-            this.buffer2.canvas.style.opacity = "0.7";
+            _this.addBuffer(_this.buffer1);
+            _this.addBuffer(_this.buffer2);
+            _this.buffer2.canvas.style.opacity = "0.7";
+            return _this;
         }
         Triangles2D.prototype.addBuffer = function (b) {
             this.el.appendChild(b.canvas);
@@ -58,6 +65,7 @@ define(["require", "exports", "./Col", "../../common/CanvasBuffer2D", "../../com
                 //  this.buffer1.ctx.fillStyle = "#eee";
                 if (this.cols1[i].complete) {
                     this.cols1[i].init();
+                    //this.buffer1.clear();
                 }
                 this.cols1[i].update();
                 this.cols1[i].draw(this.buffer1);
@@ -79,6 +87,7 @@ define(["require", "exports", "./Col", "../../common/CanvasBuffer2D", "../../com
                 //  this.buffer2.ctx.fillStyle = "#eee";
                 if (this.cols2[i].complete) {
                     this.cols2[i].init();
+                    //this.buffer2.clear();
                 }
                 this.cols2[i].update();
                 this.cols2[i].draw(this.buffer2);
@@ -102,7 +111,7 @@ define(["require", "exports", "./Col", "../../common/CanvasBuffer2D", "../../com
             }
         };
         return Triangles2D;
-    }(BaseSketch));
-    return Triangles2D;
+    }(BaseSketch_1.BaseSketch));
+    exports.Triangles2D = Triangles2D;
 });
 //# sourceMappingURL=Triangles2D.js.map

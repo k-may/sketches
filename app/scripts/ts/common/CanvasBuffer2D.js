@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Created by kev on 2016-05-18.
      */
@@ -24,6 +25,6 @@ define(["require", "exports"], function (require, exports) {
         };
         return CanvasBuffer2D;
     }());
-    return CanvasBuffer2D;
+    exports.CanvasBuffer2D = CanvasBuffer2D;
 });
 //# sourceMappingURL=CanvasBuffer2D.js.map
