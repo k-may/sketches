@@ -13,3 +13,21 @@ Not so polished, not so turd!
 ## Run
 
 - run 'gulp serve'
+
+### Examples
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel2D.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel3D.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/OrthoPanel.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/RunningPipes.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/StretchMesh.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles1.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles2.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles3.PNG?raw=true)
