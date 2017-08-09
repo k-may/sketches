@@ -9,3 +9,7 @@ Not so polished, not so turd!
 - run 'bower install'
 - run 'npm install'
 - run 'typings install' 
+
+## Run
+
+- run 'gulp serve'
