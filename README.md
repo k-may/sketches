@@ -1,6 +1,6 @@
 # sketches
 
-A collection of HTML doodles and experiments which I've created over the years.
+A collection of HTML doodles and experiments which I've created over the years. I've developed these sketches in parallel with many projects over the years, serving as experiments and proof-of-concepts. Stay tuned, many more to come!
 
 Not so polished, not so turd!
 
