@@ -26,8 +26,8 @@ Not so polished, not so turd!
 
 ![alt text](https://github.com/k-may/sketches/blob/master/img/StretchMesh.PNG?raw=true)
 
-![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles1.PNG?raw=true)
+![alt text](https://github.com/k-may/sketches/blob/master/img/Traingles1.PNG?raw=true)
 
-![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles2.PNG?raw=true)
+![alt text](https://github.com/k-may/sketches/blob/master/img/Traingles2.PNG?raw=true)
 
-![alt text](https://github.com/k-may/sketches/blob/master/img/Triangles3.PNG?raw=true)
+![alt text](https://github.com/k-may/sketches/blob/master/img/Traingles3.PNG?raw=true)
