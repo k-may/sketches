@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "./plane", "../../common/BaseSketch", "../../utils/load_utils"], function (require, exports, plane_1, BaseSketch_1, load_utils_1) {
+define(["require", "exports", "./plane", "../../common/base_sketch", "../../utils/load_utils"], function (require, exports, plane_1, base_sketch_1, load_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Sketch = (function (_super) {
@@ -99,7 +99,7 @@ define(["require", "exports", "./plane", "../../common/BaseSketch", "../../utils
             this.scene.add(this.mesh);
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=TrianglesTransitionSketch.js.map

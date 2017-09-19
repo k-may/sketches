@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../../common/BaseSketch", "../../../common/CanvasBuffer2D", "../../../utils/anim_utils"], function (require, exports, BaseSketch_1, CanvasBuffer2D_1, anim_utils_1) {
+define(["require", "exports", "../../../common/base_sketch", "../../../common/canvas_buffer2d", "../../../utils/anim_utils"], function (require, exports, base_sketch_1, canvas_buffer2d_1, anim_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -56,7 +56,7 @@ define(["require", "exports", "../../../common/BaseSketch", "../../../common/Can
             _this.l2 = new Line();
             _this.l3 = new Line();
             _this.l4 = new Line();
-            _this.buffer = new CanvasBuffer2D_1.CanvasBuffer2D();
+            _this.buffer = new canvas_buffer2d_1.CanvasBuffer2D();
             _this.el.appendChild(_this.buffer.canvas);
             _this.l1.setup({ x: 0, y: 1 }, { x: 1, y: 1 }, { x: 1, y: 1 }, { x: 1, y: 1 });
             _this.l3.visible = false;
@@ -174,7 +174,7 @@ define(["require", "exports", "../../../common/BaseSketch", "../../../common/Can
             anim_utils_1.AnimUtils.SetTransformMatrix(this.buffer.canvas, anim_utils_1.AnimUtils.GetTranslationMatrix(windowWidth * 0.25, windowHeight * 0.25));
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=sketch.js.map

@@ -1,4 +1,4 @@
-import {BaseSketch} from "../../common/BaseSketch";
+import {BaseSketch} from "../../common/base_sketch";
 import {AnimUtils} from "../../utils/anim_utils";
 /**
  * Created by Kevin on 2015-11-08.

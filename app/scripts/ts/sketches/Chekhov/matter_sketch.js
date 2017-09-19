@@ -4,10 +4,10 @@
 
 define(['underscore',
         'matter',
-        'base_sketch',
-        'utils/canvas_utils',
-        'utils/geom_utils',
-        'utils/color_utils'],
+        'ts/common/base_sketch',
+        'ts/utils/canvas_utils',
+        'ts/utils/geom_utils',
+        'ts/utils/color_utils'],
 
     function (_,
         Matter,

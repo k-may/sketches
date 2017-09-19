@@ -1,8 +1,8 @@
 /**
  * Created by kev on 15-10-09.
  */
-define(['base_sketch',
-        'utils/canvas_utils'],
+define(['ts/common/base_sketch',
+        'ts/utils/canvas_utils'],
     function (BaseSketch,
         CanvasUtils) {
 

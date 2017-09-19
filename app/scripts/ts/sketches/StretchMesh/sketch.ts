@@ -1,6 +1,6 @@
 import Vector2 = THREE.Vector2;
-import {BaseSketch} from "../../common/BaseSketch";
-import {CanvasBuffer2D} from "../../common/CanvasBuffer2D";
+import {BaseSketch} from "../../common/base_sketch";
+import {CanvasBuffer2D} from "../../common/canvas_buffer2d";
 
 /**
  * Created by kev on 15-10-26.

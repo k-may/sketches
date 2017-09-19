@@ -1,4 +1,4 @@
-import {CanvasBuffer} from "../data/CanvasBuffer";
+import {CanvasBuffer2D} from "../common/canvas_buffer2d";
 /**
  * Created by kev on 15-07-01.
  */
@@ -56,8 +56,11 @@ export class CanvasUtils {
         return output;
     }
 
+    public static CreateBuffer(){
+      return new CanvasBuffer2D();
+    }
 
-    public static GenerateTexture(buffer:CanvasBuffer):string {
+    public static GenerateTexture(buffer:CanvasBuffer2D):string {
 
         var ctx:CanvasRenderingContext2D = buffer.ctx;
         var canvas:HTMLCanvasElement = buffer.canvas;

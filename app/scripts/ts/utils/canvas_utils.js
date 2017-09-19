@@ -1,4 +1,4 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "../common/canvas_buffer2d"], function (require, exports, canvas_buffer2d_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -52,6 +52,9 @@ define(["require", "exports"], function (require, exports) {
                 }
             }
             return output;
+        };
+        CanvasUtils.CreateBuffer = function () {
+            return new canvas_buffer2d_1.CanvasBuffer2D();
         };
         CanvasUtils.GenerateTexture = function (buffer) {
             var ctx = buffer.ctx;

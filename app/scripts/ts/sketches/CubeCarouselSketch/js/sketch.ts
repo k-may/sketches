@@ -1,5 +1,5 @@
 import {Item} from "./item";
-import {BaseSketch} from "../../../common/BaseSketch";
+import {BaseSketch} from "../../../common/base_sketch";
 import {AnimUtils} from "../../../utils/anim_utils";
 /**
  * Created by kev on 16-01-06.

@@ -1,5 +1,5 @@
-import {BaseSketch} from "./common/BaseSketch";
 import {MenuView} from "./views/MenuView";
+import {BaseSketch} from "./common/base_sketch";
 
 export class MainView {
 
@@ -20,7 +20,20 @@ export class MainView {
     });
   }
 
-  start() {
+  public draw(time: number) {
+
+    if (!this.loaded) {
+      return;
+    }
+
+    if (this.sketch) {
+      this.sketch.draw(time);
+    }
+  }
+
+  //-------------------------------------------------------
+
+  private start() {
 
     this.menu = new MenuView(this.sketches);
     document.body.appendChild(this.menu.el);
@@ -29,35 +42,43 @@ export class MainView {
       this.DEFAULT_SKETCH = key;
       break;
     }
-    //create scroll expander
+
+    this.setupScroll();
+    this.setupWindow();
+    this.onHashChange(null);
+  }
+
+
+  private setupScroll() {
+//create scroll expander
     this.expander = document.createElement("div");
     this.expander.setAttribute("class", "expander");
     document.body.appendChild(this.expander);
+  }
 
+  private setupWindow() {
     window.onclick = this.onClick.bind(this);
     window.onresize = this.onResize.bind(this);
     window.onscroll = this.onScroll.bind(this);
     window.onhashchange = this.onHashChange.bind(this);
     window.onmousemove = this.onMouseMove.bind(this);
-
-    this.onHashChange(null);
   }
 
-  onClick(e: any) {
-    if(this.sketch && this.sketch.onClick)
+  private onClick(e: any) {
+    if (this.sketch && this.sketch.onClick)
       this.sketch.onClick(e);
   }
 
-  onResize(e: any) {
+  private onResize(e: any) {
     if (this.sketch) {
       this.sketch.resize(window.innerWidth, window.innerHeight);
     }
   }
 
-  onScroll(e: any) {
+  private onScroll(e: any) {
   }
 
-  onHashChange(e: any) {
+  private onHashChange(e: any) {
     var sketchId = location.hash.split("#")[1];
     var idValid = this.sketches.hasOwnProperty(sketchId);
     sketchId = idValid ? sketchId : this.DEFAULT_SKETCH;
@@ -81,7 +102,7 @@ export class MainView {
     });
   }
 
-  addSketch(sketch: BaseSketch) {
+  private addSketch(sketch: BaseSketch) {
     this.sketch = sketch;
 
     var sketchId = this.sketch.id;
@@ -101,7 +122,7 @@ export class MainView {
     this.onScroll(null);
   }
 
-  getClass(sketchId: string): Promise<any> {
+  private getClass(sketchId: string): Promise<any> {
 
     var self = this;
     return new Promise(function (resolve, reject) {
@@ -113,7 +134,6 @@ export class MainView {
         require([path], exports => {
 
           var Class = exports;
-
           //make it backwards compatible with old javascript sketches...
           if (typeof Class != "function")
             Class = exports.hasOwnProperty(sketchId) ? exports[sketchId] : exports['Sketch'];
@@ -122,24 +142,12 @@ export class MainView {
           resolve(sketch);
         });
       }
-
     });
   }
 
-  onMouseMove(e: any) {
+  private onMouseMove(e: any) {
     if (this.sketch && this.sketch.mouseMove)
       this.sketch.mouseMove(e);
-  }
-
-  draw(time: number) {
-
-    if (!this.loaded) {
-      return;
-    }
-
-    if (this.sketch) {
-      this.sketch.draw(time);
-    }
   }
 
 }

@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../common/BaseSketch", "../../utils/anim_utils"], function (require, exports, BaseSketch_1, anim_utils_1) {
+define(["require", "exports", "../../common/base_sketch", "../../utils/anim_utils"], function (require, exports, base_sketch_1, anim_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -83,7 +83,7 @@ define(["require", "exports", "../../common/BaseSketch", "../../utils/anim_utils
             this.invalidated = true;
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=Sketch.js.map

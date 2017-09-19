@@ -2,232 +2,230 @@
  * Created by kev on 15-10-20.
  */
 
-define(['sketches/simple_physics_sketch',
-        'utils/load_utils',
-        'utils/color_utils',
-        'utils/geom_utils',
-        'utils/animation_utils',
-        'utils/canvas_utils'],
+define(['ts/sketches/Chekhov/simple_physics_sketch',
+    'ts/utils/utils_shim',
+  'ts/sketches/Chekhov/utils/geom_utils'],
 
-    function (SimplePhysicsSketch,
-        LoadUtils,
-        ColorUtils,
-        GeomUtils,
-        AnimUtils,
-        CanvasUtils) {
+  function (SimplePhysicsSketch,
+            Utils,
+  GeomUtils) {
 
-        return SimplePhysicsSketch.extend({
+    return SimplePhysicsSketch.extend({
 
-            loadStarted:false,
-            svg        :{
-                width :0,
-                height:0,
-                scale :1,
-                dX    :0,
-                dY    :0
-            },
+      loadStarted: false,
 
-            targetPanRatio:0,
-            panRatio      :0,
-            panSpeed      :0,
-            panPos        :0,
+      svg: {
+        width: 0,
+        height: 0,
+        scale: 1,
+        dX: 0,
+        dY: 0
+      },
 
-            glassesBuffer:null,
-            loaded       :false,
+      targetPanRatio: 0,
+      panRatio: 0,
+      panSpeed: 0,
+      panPos: 0,
 
-            createCircles:function () {
+      glassesBuffer: null,
+      loaded: false,
 
-                if (this.loadStarted) {
-                    return;
-                }
-                this.loadStarted = true;
-                var self = this;
+      createCircles: function () {
 
-                LoadUtils.LoadImage('img/glasses.png').then(function (img) {
-                    self.glassesBuffer = CanvasUtils.CreateBuffer();
-                    self.glassesBuffer.resize(img.naturalWidth,img.naturalHeight);
-                    self.glassesBuffer.ctx.drawImage(img,0,0);
-                });
+        if (this.loadStarted) {
+          return;
+        }
+        this.loadStarted = true;
+        var self = this;
 
-                this.glassesBuffer = CanvasUtils.CreateBuffer();
-                LoadUtils.LoadSVG('svg/checkov_circles.svg').then(function (svg) {
+        Utils.LoadUtils.LoadImageBySrc('scripts/ts/sketches/chekhov/img/glasses.png').then(function (img) {
+          self.glassesBuffer = Utils.CanvasUtils.CreateBuffer();
+          self.glassesBuffer.resize(img.naturalWidth, img.naturalHeight);
+          self.glassesBuffer.ctx.drawImage(img, 0, 0);
+        });
 
-                    var svg = svg.getElementsByTagName('svg')[0];
-                    var viewbox = svg.viewBox.baseVal;
-                    self.svg = {
-                        width :viewbox.width,
-                        height:viewbox.height,
-                        scale :1
-                    };
+        this.glassesBuffer = Utils.CanvasUtils.CreateBuffer();
 
-                    var circlesSVG = svg.getElementsByTagName('circle');
-                    for (var i = 0; i < circlesSVG.length; i++) {
-                        var circle = self.parseCircle(circlesSVG[i]);
-                        self.circles.push(circle);
-                    }
+        Utils.LoadUtils.LoadSVG('scripts/ts/sketches/chekhov/svg/checkov_circles.svg').then(function (svg) {
 
-                    self.loaded = true;
+          var svg = svg.getElementsByTagName('svg')[0];
+          var viewbox = svg.viewBox.baseVal;
+          self.svg = {
+            width: viewbox.width,
+            height: viewbox.height,
+            scale: 1
+          };
 
-                    //reset offsets
-                    self.resize(self.buffer.width,self.buffer.height);
-                });
-            },
+          var circlesSVG = svg.getElementsByTagName('circle');
+          for (var i = 0; i < circlesSVG.length; i++) {
+            var circle = self.parseCircle(circlesSVG[i]);
+            self.circles.push(circle);
+          }
 
-            resize:function (width,height) {
+          self.loaded = true;
 
-                SimplePhysicsSketch.prototype.resize.apply(this,arguments);
+          //reset offsets
+          self.resize(self.buffer.width, self.buffer.height);
+        });
+      },
 
-                if (this.loaded) {
-                    var scale = Math.min(width / this.svg.width,height / this.svg.height);
-                    this.svg.scale = scale;
+      resize: function (width, height) {
 
-                    this.setScrollRatio(this.scrollRatio);
-                }
-            },
+        SimplePhysicsSketch.prototype.resize.apply(this, arguments);
 
-            parseCircle:function (child) {
-                var x = parseInt(child.getAttribute("cx"));
-                var y = parseInt(child.getAttribute("cy"));
-                var radius = parseInt(child.getAttribute("r"));
-                var fill = child.getAttribute('fill');
-                var color = ColorUtils.hexToRgb(fill);
-                return new GeomUtils.Circle(x,y,radius,color);
-            },
+        if (this.loaded) {
+          var scale = Math.min(width / this.svg.width, height / this.svg.height);
+          this.svg.scale = scale;
 
-            updateMouse:function () {
-                this.updateCurrentMouse();
-                this.updatePan();
-            },
+          this.setScrollRatio(this.scrollRatio);
+        }
+      },
 
-            updateCurrentMouse:function () {
-                var targetRadius = this.getTargetScale();
-                var current = null;
-                var circle,distance,targetScale,pos;
+      parseCircle: function (child) {
+        var x = parseInt(child.getAttribute("cx"));
+        var y = parseInt(child.getAttribute("cy"));
+        var radius = parseInt(child.getAttribute("r"));
+        var fill = child.getAttribute('fill');
+        var color = Utils.ColorUtils.hexToRgb(fill);
+        var circle = new GeomUtils.Circle(x, y, radius);
+        circle.color = color;
+        return circle;
+      },
 
-                for (var i = 0; i < this.circles.length; i++) {
+      updateMouse: function () {
+        this.updateCurrentMouse();
+        this.updatePan();
+      },
 
-                    circle = this.circles[i];
-                    pos = this.getCirclePosWorld(circle);//circle.position.position;
-                    distance = AnimUtils.Distance(pos.x,this.mousePos.x,pos.y,this.mousePos.y);
-                    targetScale = targetRadius / (circle.radius);
+      updateCurrentMouse: function () {
+        var targetRadius = this.getTargetScale();
+        var current = null;
+        var circle, distance, targetScale, pos;
 
-                    if (distance < pos.radius) {
-                        //more static selection
-                        circle.scale = Math.max(1,targetScale);
-                        circle.setActive(true);
-                        current = circle;
-                    } else {
-                        circle.setActive(false);
-                        circle.scale = 1;
-                    }
-                }
-                this.current = current;
-            },
+        for (var i = 0; i < this.circles.length; i++) {
 
-            updatePan:function () {
+          circle = this.circles[i];
+          pos = this.getCirclePosWorld(circle);//circle.position.position;
+          distance = GeomUtils.Distance(pos.x, this.mousePos.x, pos.y, this.mousePos.y);
+          targetScale = targetRadius / (circle.radius);
 
-                this.panSpeed = 0;
-                if (this.getPanDifference()) {
-                    if (this.mousePos.y < 200) {
-                        var speed = 2 / 200;
-                        this.panSpeed = 5 * ( 1 - speed);
-                    } else if (this.mousePos.y > this.buffer.height - 200) {
-                        var speed = (this.mousePos.y - (this.buffer.height - 200));
-                        speed = speed / 200;
-                        this.panSpeed = -5 * (speed);
-                    }
-                }
-            },
+          if (distance < pos.radius) {
+            //more static selection
+            circle.scale = Math.max(1, targetScale);
+            circle.setActive(true);
+            current = circle;
+          } else {
+            circle.setActive(false);
+            circle.scale = 1;
+          }
+        }
+        this.current = current;
+      },
 
-            draw:function (time) {
+      updatePan: function () {
 
-                if (this.loaded) {
-                    var difference = this.getPanDifference();
-                    this.targetPanRatio = difference ? Math.max(-1,Math.min(1,(this.targetPanRatio * difference + this.panSpeed) / difference)) : 0;
-                    this.panRatio += (this.targetPanRatio - this.panRatio) * 0.1;
-                }
+        this.panSpeed = 0;
+        if (this.getPanDifference()) {
+          if (this.mousePos.y < 200) {
+            var speed = 2 / 200;
+            this.panSpeed = 5 * ( 1 - speed);
+          } else if (this.mousePos.y > this.buffer.height - 200) {
+            var speed = (this.mousePos.y - (this.buffer.height - 200));
+            speed = speed / 200;
+            this.panSpeed = -5 * (speed);
+          }
+        }
+      },
 
-                SimplePhysicsSketch.prototype.draw.apply(this,arguments);
+      draw: function (time) {
 
-                if (this.glassesBuffer) {
-                    var glassesPos = this.getGlassesPosWorld();
-                    var scale = this.getWorldScale();
-                    this.buffer.ctx.drawImage(this.glassesBuffer.canvas,
-                        glassesPos.x,
-                        glassesPos.y,
-                        this.glassesBuffer.width * scale / 10,
-                        this.glassesBuffer.height*scale / 10
-                    );
-                }
+        if (this.loaded) {
+          var difference = this.getPanDifference();
+          this.targetPanRatio = difference ? Math.max(-1, Math.min(1, (this.targetPanRatio * difference + this.panSpeed) / difference)) : 0;
+          this.panRatio += (this.targetPanRatio - this.panRatio) * 0.1;
+        }
 
-            },
+        SimplePhysicsSketch.prototype.draw.apply(this, arguments);
+
+        if (this.glassesBuffer) {
+          var glassesPos = this.getGlassesPosWorld();
+          var scale = this.getWorldScale();
+          this.buffer.ctx.drawImage(this.glassesBuffer.canvas,
+            glassesPos.x,
+            glassesPos.y,
+            this.glassesBuffer.width * scale / 10,
+            this.glassesBuffer.height * scale / 10
+          );
+        }
+
+      },
 
 
-            drawCircle:function (ctx,circle) {
+      drawCircle: function (ctx, circle) {
 
-                if (this.current) {
-                    circle.currentScale += (circle.scale - circle.currentScale) * 0.1;
-                } else {
-                    circle.currentScale += (1 - circle.currentScale) * 0.1;
-                }
-                ctx.beginPath();
-                ctx.fillStyle = circle.color.toRGBString();
+        if (this.current) {
+          circle.currentScale += (circle.scale - circle.currentScale) * 0.1;
+        } else {
+          circle.currentScale += (1 - circle.currentScale) * 0.1;
+        }
+        ctx.beginPath();
+        ctx.fillStyle = circle.color.toRGBString();
 
-                var cP = this.getCirclePosWorld(circle);
+        var cP = this.getCirclePosWorld(circle);
 
-                ctx.arc(cP.x,cP.y,cP.radius,0,Math.PI * 2);
-                ctx.fill();
-            },
+        ctx.arc(cP.x, cP.y, cP.radius, 0, Math.PI * 2);
+        ctx.fill();
+      },
 
-            getPanDifference:function () {
-                //todo create variable, set only on resize
-                var scale = this.getWorldScale();
-                var svgWorldHeight = this.svg.height * scale;
-                return svgWorldHeight - this.buffer.height;
-            },
+      getPanDifference: function () {
+        //todo create variable, set only on resize
+        var scale = this.getWorldScale();
+        var svgWorldHeight = this.svg.height * scale;
+        return svgWorldHeight - this.buffer.height;
+      },
 
-            getGlassesPosWorld:function () {
+      getGlassesPosWorld: function () {
 
-                var x = 0.08;
-                var y = 0.45;
-                var scale = this.getWorldScale();
-                return {
-                    x    :(this.svg.dX + this.svg.width* x)*scale ,
-                    y    :(this.svg.dY + this.svg.height*y)*scale + this.panRatio * this.getPanDifference(),
-                    scale:scale
-                };
-            },
+        var x = 0.08;
+        var y = 0.45;
+        var scale = this.getWorldScale();
+        return {
+          x: (this.svg.dX + this.svg.width * x) * scale,
+          y: (this.svg.dY + this.svg.height * y) * scale + this.panRatio * this.getPanDifference(),
+          scale: scale
+        };
+      },
 
-            getCirclePosWorld:function (circle) {
-                var scale = this.getWorldScale();
-                return {
-                    x     :(this.svg.dX + circle.position.position.x) * scale,
-                    y     :(this.svg.dY + circle.position.position.y) * scale + this.panRatio * this.getPanDifference(),
-                    radius:circle.radius * circle.currentScale * scale
-                }
-            },
+      getCirclePosWorld: function (circle) {
+        var scale = this.getWorldScale();
+        return {
+          x: (this.svg.dX + circle.position.position.x) * scale,
+          y: (this.svg.dY + circle.position.position.y) * scale + this.panRatio * this.getPanDifference(),
+          radius: circle.radius * circle.currentScale * scale
+        }
+      },
 
-            getTargetScale:function () {
-                return 20;
-            },
+      getTargetScale: function () {
+        return 20;
+      },
 
-            getWorldScale:function () {
-                return this.svg.scale + this.scrollRatio * 4;
-            },
+      getWorldScale: function () {
+        return this.svg.scale + this.scrollRatio * 4;
+      },
 
-            setScrollRatio:function (value) {
-                this.scrollRatio = value;
+      setScrollRatio: function (value) {
+        this.scrollRatio = value;
 
-                var scale = this.getWorldScale();
-                this.svg.dX = (this.buffer.width / scale - this.svg.width) / 2;
-                this.svg.dY = (this.buffer.height / scale - this.svg.height) / 2;
-            },
+        var scale = this.getWorldScale();
+        this.svg.dX = (this.buffer.width / scale - this.svg.width) / 2;
+        this.svg.dY = (this.buffer.height / scale - this.svg.height) / 2;
+      },
 
-            //override
-            toggle:function () {
-                //do nothing
-            },
-
-        })
+      //override
+      toggle: function () {
+        //do nothing
+      },
 
     })
+
+  })

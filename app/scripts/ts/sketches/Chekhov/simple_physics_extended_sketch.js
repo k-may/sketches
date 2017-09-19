@@ -1,8 +1,8 @@
 /**
  * Created by kev on 15-10-20.
  */
-define(["sketches/simple_physics_sketch",
-        "utils/animation_utils"],
+define(["ts/sketches/Chekhov/simple_physics_sketch",
+        "ts/utils/anim_utils"],
 
     function (SimplePhysicsSketch,
         AnimUtils) {

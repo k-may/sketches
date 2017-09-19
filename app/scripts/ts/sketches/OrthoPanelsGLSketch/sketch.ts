@@ -1,4 +1,4 @@
-import {BaseSketch} from "../../common/BaseSketch";
+import {BaseSketch} from "../../common/base_sketch";
 import {ShadowMesh} from "./shadow_mesh";
 import {LoadUtils} from "../../utils/load_utils";
 /**

@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/CanvasBuffer2D"], function (require, exports, BaseSketch_1, Col_1, CanvasBuffer2D_1) {
+define(["require", "exports", "../../common/base_sketch", "./Col", "../../common/canvas_buffer2d"], function (require, exports, base_sketch_1, Col_1, canvas_buffer2d_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -31,8 +31,8 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
             for (var i = 0; i < num; i++) {
                 _this.cols2.push(new Col_1.Col(_this.size));
             }
-            _this.buffer1 = new CanvasBuffer2D_1.CanvasBuffer2D();
-            _this.buffer2 = new CanvasBuffer2D_1.CanvasBuffer2D();
+            _this.buffer1 = new canvas_buffer2d_1.CanvasBuffer2D();
+            _this.buffer2 = new canvas_buffer2d_1.CanvasBuffer2D();
             /*
     
              div.appendChild(this.buffer1.canvas);
@@ -111,7 +111,7 @@ define(["require", "exports", "../../common/BaseSketch", "./Col", "../../common/
             }
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=sketch.js.map

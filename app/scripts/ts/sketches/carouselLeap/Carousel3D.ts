@@ -1,4 +1,4 @@
-import {BaseSketch} from "../../common/BaseSketch";
+import {BaseSketch} from "../../common/base_sketch";
 import {Item} from "./Item";
 import {AnimUtils} from "../../utils/anim_utils";
 

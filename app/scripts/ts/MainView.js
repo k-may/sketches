@@ -14,6 +14,15 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
                 _this.start();
             });
         }
+        MainView.prototype.draw = function (time) {
+            if (!this.loaded) {
+                return;
+            }
+            if (this.sketch) {
+                this.sketch.draw(time);
+            }
+        };
+        //-------------------------------------------------------
         MainView.prototype.start = function () {
             this.menu = new MenuView_1.MenuView(this.sketches);
             document.body.appendChild(this.menu.el);
@@ -21,16 +30,22 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
                 this.DEFAULT_SKETCH = key;
                 break;
             }
+            this.setupScroll();
+            this.setupWindow();
+            this.onHashChange(null);
+        };
+        MainView.prototype.setupScroll = function () {
             //create scroll expander
             this.expander = document.createElement("div");
             this.expander.setAttribute("class", "expander");
             document.body.appendChild(this.expander);
+        };
+        MainView.prototype.setupWindow = function () {
             window.onclick = this.onClick.bind(this);
             window.onresize = this.onResize.bind(this);
             window.onscroll = this.onScroll.bind(this);
             window.onhashchange = this.onHashChange.bind(this);
             window.onmousemove = this.onMouseMove.bind(this);
-            this.onHashChange(null);
         };
         MainView.prototype.onClick = function (e) {
             if (this.sketch && this.sketch.onClick)
@@ -102,14 +117,6 @@ define(["require", "exports", "./views/MenuView"], function (require, exports, M
         MainView.prototype.onMouseMove = function (e) {
             if (this.sketch && this.sketch.mouseMove)
                 this.sketch.mouseMove(e);
-        };
-        MainView.prototype.draw = function (time) {
-            if (!this.loaded) {
-                return;
-            }
-            if (this.sketch) {
-                this.sketch.draw(time);
-            }
         };
         return MainView;
     }());

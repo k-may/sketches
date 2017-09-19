@@ -4,9 +4,9 @@
 
 
 define(['rsvp',
-        'base_sketch',
-        'utils/canvas_utils',
-        'utils/animation_utils'],
+        'ts/common/base_sketch',
+        'ts/utils/canvas_utils',
+        'ts/utils/anim_utils'],
 
     function (RSVP,
         BaseSketch,

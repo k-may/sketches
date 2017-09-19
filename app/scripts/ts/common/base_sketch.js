@@ -80,4 +80,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.BaseSketch = BaseSketch;
 });
-//# sourceMappingURL=BaseSketch.js.map
+//# sourceMappingURL=base_sketch.js.map

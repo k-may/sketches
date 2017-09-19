@@ -27,4 +27,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.CanvasBuffer2D = CanvasBuffer2D;
 });
-//# sourceMappingURL=CanvasBuffer2D.js.map
+//# sourceMappingURL=canvas_buffer2d.js.map

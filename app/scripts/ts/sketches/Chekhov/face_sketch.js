@@ -2,12 +2,12 @@
  * Created by kev on 15-10-20.
  */
 
-define(['sketches/simple_physics_sketch',
-        'utils/canvas_utils',
-        'utils/animation_utils',
-        'utils/load_utils',
-        'utils/geom_utils',
-        'utils/color_utils'],
+define(['ts/sketches/Chekhov/simple_physics_sketch',
+        'ts/utils/canvas_utils',
+        'ts/utils/anim_utils',
+        'ts/utils/load_utils',
+        'ts/utils/geom_utils',
+        'ts/utils/color_utils'],
 
     function (SimplePhysicsSketch,
         CanvasUtils,

@@ -40,7 +40,10 @@ require.config({
     'modernizr': 'libs/modernizr',
     'handlebars': 'components/handlebars/handlebars.min',
     'text': 'components/text/text',
-    'three': 'components/three.js/build/three.min'
+    'three': 'components/three.js/build/three.min',
+    'backbone' : 'components/backbone/backbone-min',
+    'rsvp' : 'components/rsvp.js/rsvp.min',
+    'TweenMax' : 'components/gsap/src/minified/TweenMax.min'
   },
 
   shim: {

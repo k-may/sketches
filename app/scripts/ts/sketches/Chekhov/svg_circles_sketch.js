@@ -3,7 +3,11 @@
  */
 
 
-define(['base_sketch','rsvp','utils/canvas_utils','underscore','utils/animation_utils'],
+define(['ts/common/base_sketch',
+    'rsvp',
+    'ts/utils/canvas_utils',
+    'underscore',
+    'ts/utils/anim_utils'],
 
     function (BaseSketch,RSVP,CanvasUtils,_,AnimUtils) {
 

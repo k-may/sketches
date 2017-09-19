@@ -1,7 +1,7 @@
 
-import {BaseSketch} from "../../common/BaseSketch";
+import {BaseSketch} from "../../common/base_sketch";
 import {Col} from "./Col";
-import {CanvasBuffer2D} from "../../common/CanvasBuffer2D";
+import {CanvasBuffer2D} from "../../common/canvas_buffer2d";
 /**
  * Created by kev on 2016-05-18.
  */

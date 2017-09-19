@@ -1,4 +1,4 @@
-import {BaseSketch} from "../../../common/BaseSketch";
+import {BaseSketch} from "../../../common/base_sketch";
 import {SpriteData} from "./sprite_data";
 import {SpritePlane} from "./sprite_plane";
 import {LoadUtils} from "../../../utils/load_utils";

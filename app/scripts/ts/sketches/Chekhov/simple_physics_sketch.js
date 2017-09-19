@@ -1,16 +1,11 @@
 /**
  * Created by kev on 15-10-09.
  */
-define(['base_sketch',
-        'utils/canvas_utils',
-        'utils/color_utils',
-        'utils/geom_utils',
-        'utils/animation_utils'],
+define(['ts/sketches/Chekhov/base_sketch',
+        'ts/utils/utils_shim'],
+
     function (BaseSketch,
-        CanvasUtils,
-        ColorUtils,
-        GeomUtils,
-        AnimUtils) {
+        Utils) {
 
 
         return BaseSketch.extend({
@@ -24,7 +19,7 @@ define(['base_sketch',
             lastUpdate:-1,
 
             initialize:function () {
-                this.buffer = CanvasUtils.CreateBuffer();
+                this.buffer = Utils.CanvasUtils.CreateBuffer();
                 this.el.appendChild(this.buffer.canvas);
                 this.lastUpdate = Date.now();
                 this.el.onmousemove = _.bind(this.onMouseMove,this);
@@ -97,7 +92,7 @@ define(['base_sketch',
 
                     circle = this.circles[i];
                     pos = circle.position.position;
-                    distance = AnimUtils.Distance(pos.x,this.mousePos.x,pos.y,this.mousePos.y);
+                    distance = Utils.AnimUtils.Distance(pos.x,this.mousePos.x,pos.y,this.mousePos.y);
                     targetScale = targetRadius / (circle.radius);
 
                     if (distance < circle.radius * circle.currentScale) {

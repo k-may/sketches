@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "three", "./plane", "../../../common/BaseSketch", "../../../utils/load_utils"], function (require, exports, THREE, plane_1, BaseSketch_1, load_utils_1) {
+define(["require", "exports", "three", "./plane", "../../../common/base_sketch", "../../../utils/load_utils"], function (require, exports, THREE, plane_1, base_sketch_1, load_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -71,7 +71,7 @@ define(["require", "exports", "three", "./plane", "../../../common/BaseSketch", 
             this.material.uniforms["resolution"].value = new THREE.Vector2(windowWidth, windowHeight);
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=sketch.js.map

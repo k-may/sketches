@@ -6,12 +6,12 @@
  */
 
 
-define(['base_sketch',
+define(['ts/common/base_sketch',
         'rsvp',
-        'utils/canvas_utils',
+        'ts/utils/canvas_utils',
         'underscore',
-        'utils/animation_utils',
-        'utils/color_utils'],
+        'ts/utils/animation_utils',
+        'ts/utils/color_utils'],
 
     function (BaseSketch,RSVP,CanvasUtils,_,AnimUtils,ColorUtils) {
 

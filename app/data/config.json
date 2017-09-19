@@ -32,6 +32,15 @@
     },
     "Button 1" : {
       "View" : "CloseButtonSketch/js/sketch"
+    },
+    "Chekhov" : {
+      "View" : "Chekhov/chekhov_sketch"
+    },
+    "PingPong" : {
+      "View" : "PingPong/pingpong_sketch"
+    },
+    "Refraction" :{
+      "View" : "RefractionSketch/sketch"
     }
   }
 }

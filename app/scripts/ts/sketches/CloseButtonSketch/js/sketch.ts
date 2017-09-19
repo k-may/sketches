@@ -1,5 +1,5 @@
-import {BaseSketch} from "../../../common/BaseSketch";
-import {CanvasBuffer2D} from "../../../common/CanvasBuffer2D";
+import {BaseSketch} from "../../../common/base_sketch";
+import {CanvasBuffer2D} from "../../../common/canvas_buffer2d";
 import {AnimUtils} from "../../../utils/anim_utils";
 /**
  * Created by kev on 16-02-08.

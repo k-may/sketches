@@ -5,8 +5,8 @@
 
 define(['rsvp',
         'underscore',
-        'base_sketch',
-        'utils/canvas_utils',
+        'ts/common/base_sketch',
+        'ts/utils/canvas_utils',
         'TweenMax'],
 
     function (RSVP,

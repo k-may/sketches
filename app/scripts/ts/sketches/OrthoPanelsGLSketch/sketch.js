@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../common/BaseSketch", "./shadow_mesh", "../../utils/load_utils"], function (require, exports, BaseSketch_1, shadow_mesh_1, load_utils_1) {
+define(["require", "exports", "../../common/base_sketch", "./shadow_mesh", "../../utils/load_utils"], function (require, exports, base_sketch_1, shadow_mesh_1, load_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -93,7 +93,7 @@ define(["require", "exports", "../../common/BaseSketch", "./shadow_mesh", "../..
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=sketch.js.map

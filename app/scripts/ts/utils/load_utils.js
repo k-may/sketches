@@ -133,6 +133,18 @@ define(["require", "exports"], function (require, exports) {
                     return false;
             }
         };
+        LoadUtils.LoadSVG = function (path) {
+            return new Promise(function (resolve, reject) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        resolve(xhttp.responseXML);
+                    }
+                };
+                xhttp.open("GET", path, true);
+                xhttp.send();
+            });
+        };
         return LoadUtils;
     }());
     exports.LoadUtils = LoadUtils;

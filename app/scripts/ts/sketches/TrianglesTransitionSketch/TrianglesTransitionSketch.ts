@@ -1,5 +1,5 @@
 import {Plane} from "./plane";
-import {BaseSketch} from "../../common/BaseSketch";
+import {BaseSketch} from "../../common/base_sketch";
 import {LoadUtils} from "../../utils/load_utils";
 
 export class Sketch extends BaseSketch {

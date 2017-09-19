@@ -42,4 +42,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.BaseController = BaseController;
 });
-//# sourceMappingURL=BaseController.js.map
+//# sourceMappingURL=base_controller.js.map

@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../common/BaseSketch", "../../common/CanvasBuffer2D"], function (require, exports, BaseSketch_1, CanvasBuffer2D_1) {
+define(["require", "exports", "../../common/base_sketch", "../../common/canvas_buffer2d"], function (require, exports, base_sketch_1, canvas_buffer2d_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -18,7 +18,7 @@ define(["require", "exports", "../../common/BaseSketch", "../../common/CanvasBuf
         __extends(Sketch, _super);
         function Sketch() {
             var _this = _super.call(this) || this;
-            _this.buffer = new CanvasBuffer2D_1.CanvasBuffer2D();
+            _this.buffer = new canvas_buffer2d_1.CanvasBuffer2D();
             _this.buffer.resize(window.innerWidth, window.innerHeight);
             _this.headPos = new THREE.Vector2(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
             _this.body = [];
@@ -149,7 +149,7 @@ define(["require", "exports", "../../common/BaseSketch", "../../common/CanvasBuf
             }
         };
         return Sketch;
-    }(BaseSketch_1.BaseSketch));
+    }(base_sketch_1.BaseSketch));
     exports.Sketch = Sketch;
 });
 //# sourceMappingURL=sketch.js.map

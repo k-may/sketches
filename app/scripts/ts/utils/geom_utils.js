@@ -1,9 +1,15 @@
+/**
+ * Created by kev on 15-07-06.
+ */
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    /**
-     * Created by kev on 15-07-06.
-     */
+    var Point = (function () {
+        function Point() {
+        }
+        return Point;
+    }());
+    exports.Point = Point;
     var GeomUtils = (function () {
         function GeomUtils() {
         }
