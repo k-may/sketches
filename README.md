@@ -16,6 +16,10 @@ Not so polished, not so turd!
 
 ### Examples
 
+![alt text](https://github.com/k-may/sketches/blob/master/img/refraction.PNG?raw=true)
+
+![alt text](https://github.com/k-may/sketches/blob/master/img/pingpong.PNG?raw=true)
+
 ![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel2D.PNG?raw=true)
 
 ![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel3D.PNG?raw=true)
