@@ -20,10 +20,6 @@ Not so polished, not so turd!
 
 ![alt text](https://github.com/k-may/sketches/blob/master/img/pingpong.PNG?raw=true)
 
-![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel2D.PNG?raw=true)
-
-![alt text](https://github.com/k-may/sketches/blob/master/img/Carousel3D.PNG?raw=true)
-
 ![alt text](https://github.com/k-may/sketches/blob/master/img/OrthoPanel.PNG?raw=true)
 
 ![alt text](https://github.com/k-may/sketches/blob/master/img/RunningPipes.PNG?raw=true)
