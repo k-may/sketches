@@ -171,7 +171,7 @@ export class Sketch extends BaseSketch {
         this.pingPongs.push(pingPong);
       }
 
-      this.renderer = new THREE.WebGLRenderer({alpha: true});
+      this.renderer = new THREE.WebGLRenderer({alpha: true, antialias : true});
       this.renderer.setPixelRatio(window.devicePixelRatio);
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.setClearColor(0xffffff, 0);

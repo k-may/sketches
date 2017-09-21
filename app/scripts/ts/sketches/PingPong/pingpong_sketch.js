@@ -127,7 +127,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/load_util
                     var pingPong = new PingPongData(src[0], src[1]);
                     _this.pingPongs.push(pingPong);
                 }
-                _this.renderer = new THREE.WebGLRenderer({ alpha: true });
+                _this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
                 _this.renderer.setPixelRatio(window.devicePixelRatio);
                 _this.renderer.setSize(window.innerWidth, window.innerHeight);
                 _this.renderer.setClearColor(0xffffff, 0);
