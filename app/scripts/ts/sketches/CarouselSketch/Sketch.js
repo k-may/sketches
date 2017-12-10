@@ -14,7 +14,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/anim_util
     /**
      * Created by Kevin on 2015-11-08.
      */
-    var Div = (function () {
+    var Div = /** @class */ (function () {
         function Div(div) {
             this.x = 0;
             this.y = 0;
@@ -23,7 +23,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/anim_util
         return Div;
     }());
     exports.Div = Div;
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         function Sketch(div) {
             var _this = _super.call(this) || this;

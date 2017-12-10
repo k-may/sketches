@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var BaseController = (function () {
+    var BaseController = /** @class */ (function () {
         function BaseController() {
             this.eventQueue = [];
             this.eventHandlers = {};

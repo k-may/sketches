@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kev on 15-10-05.
      */
-    var DOMUtils = (function () {
+    var DOMUtils = /** @class */ (function () {
         function DOMUtils() {
         }
         DOMUtils.CreateDiv = function (className) {

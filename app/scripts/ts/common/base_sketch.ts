@@ -2,7 +2,7 @@
  * Created by kev on 2016-05-18.
  */
 
-export class BaseSketch {
+export class  BaseSketch {
 
   $el: any;
   el: HTMLElement;
@@ -18,8 +18,8 @@ export class BaseSketch {
 
   //-----------------------------------------------------------
 
-  constructor() {
-    this.el = document.createElement("div");
+  constructor(el? : HTMLElement) {
+    this.el = el || document.createElement("div");
     this.el.setAttribute('class', 'sketch_cont');
     this.$el = $(this.el);
   }

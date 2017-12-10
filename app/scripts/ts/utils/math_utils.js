@@ -4,7 +4,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MathUtils = (function () {
+    var MathUtils = /** @class */ (function () {
         function MathUtils() {
         }
         MathUtils.Map = function (value, low2, high2) {

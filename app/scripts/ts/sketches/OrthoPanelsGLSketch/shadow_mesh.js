@@ -17,7 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ShadowMesh = (function (_super) {
+    var ShadowMesh = /** @class */ (function (_super) {
         __extends(ShadowMesh, _super);
         function ShadowMesh(mesh, material) {
             var _this = _super.call(this, mesh.geometry, material) || this;

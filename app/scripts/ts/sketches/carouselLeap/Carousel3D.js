@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "../../common/base_sketch", "./Item", "../../utils/anim_utils"], function (require, exports, base_sketch_1, Item_1, anim_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Carousel3D = (function (_super) {
+    var Carousel3D = /** @class */ (function (_super) {
         __extends(Carousel3D, _super);
         //-----------------------------------------------------
         function Carousel3D() {

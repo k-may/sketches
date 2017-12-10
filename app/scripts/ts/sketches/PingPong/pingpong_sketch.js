@@ -15,7 +15,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/load_util
     /**
      * Created by kevin.mayo on 8/15/2017.
      */
-    var PingPongData = (function () {
+    var PingPongData = /** @class */ (function () {
         function PingPongData(fragmentShader, vertexShader) {
             this.time = Math.random();
             this.offset = Math.random();
@@ -79,7 +79,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/load_util
         return PingPongData;
     }());
     //======================================================
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         //------------------------------------------------------
         function Sketch() {

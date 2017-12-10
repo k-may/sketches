@@ -4,7 +4,7 @@ define(["require", "exports", "../../../utils/load_utils"], function (require, e
     /**
      * Created by kevin.mayo on 8/4/2017.
      */
-    var SpriteData = (function () {
+    var SpriteData = /** @class */ (function () {
         //----------------------------------------------------------
         function SpriteData(name, frag, vert) {
             this.frameCounter = 0;

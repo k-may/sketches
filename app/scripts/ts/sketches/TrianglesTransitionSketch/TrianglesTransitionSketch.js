@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "./plane", "../../common/base_sketch", "../../utils/load_utils"], function (require, exports, plane_1, base_sketch_1, load_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         function Sketch() {
             var _this = _super.call(this) || this;

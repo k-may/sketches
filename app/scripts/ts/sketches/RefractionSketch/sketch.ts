@@ -178,7 +178,7 @@ export class Sketch extends BaseSketch {
         side: THREE.DoubleSide
       });
 
-      var loader = new THREE.OBJLoader();
+      var loader = new OBJLoader();
       loader.load(this.path + 'CubeUV.obj', (object) => {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {

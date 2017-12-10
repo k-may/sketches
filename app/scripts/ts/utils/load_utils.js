@@ -4,7 +4,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var LoadUtils = (function () {
+    var LoadUtils = /** @class */ (function () {
         function LoadUtils() {
         }
         LoadUtils.LoadAJAX = function (url, type) {

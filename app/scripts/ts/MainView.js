@@ -1,7 +1,7 @@
 define(["require", "exports", "./views/MenuView"], function (require, exports, MenuView_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MainView = (function () {
+    var MainView = /** @class */ (function () {
         function MainView() {
             var _this = this;
             this.sketches = {};

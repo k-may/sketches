@@ -14,7 +14,7 @@ define(["require", "exports", "./item", "../../../common/base_sketch", "../../..
     /**
      * Created by kev on 16-01-06.
      */
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         function Sketch() {
             var _this = _super.call(this) || this;

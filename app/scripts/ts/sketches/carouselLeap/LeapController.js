@@ -1,8 +1,3 @@
-/**
- * Created by kev on 16-01-06.
- */
-///<reference path="../../../typings/leapmotionTS/leapmotionts-2.2.4.d.ts"/>
-///<reference path="../../ts/base_controller.ts"/>
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -13,9 +8,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../../../typings/leapmotionTS/leapmotionts-2.2.4", "../../ts/base_controller"], function (require, exports, Leap, BaseController) {
+define(["require", "exports", "../../common/base_controller", "leapmotionts"], function (require, exports, base_controller_1, leapmotionts_1) {
     "use strict";
-    var LeapController = (function (_super) {
+    var LeapController = /** @class */ (function (_super) {
         __extends(LeapController, _super);
         function LeapController() {
             var _this = _super.call(this) || this;
@@ -23,13 +18,13 @@ define(["require", "exports", "../../../typings/leapmotionTS/leapmotionts-2.2.4"
                 start: -1
             };
             _this.createElements();
-            _this.controller = new Leap.Controller();
-            _this.controller.addEventListener(Leap.LeapEvent.LEAPMOTION_CONNECTED, function (event) {
+            _this.controller = new leapmotionts_1.Controller();
+            _this.controller.addEventListener(leapmotionts_1.LeapEvent.LEAPMOTION_CONNECTED, function (event) {
                 _this.console("connected");
-                _this.controller.enableGesture(Leap.Type.TYPE_SWIPE);
-                _this.controller.enableGesture(Leap.Type.TYPE_SCREEN_TAP);
+                _this.controller.enableGesture(leapmotionts_1.Gesture.TYPE_SWIPE);
+                _this.controller.enableGesture(leapmotionts_1.Gesture.TYPE_SCREEN_TAP);
             });
-            _this.controller.addEventListener(Leap.LeapEvent.LEAPMOTION_FRAME, function (event) {
+            _this.controller.addEventListener(leapmotionts_1.LeapEvent.LEAPMOTION_FRAME, function (event) {
                 _this.onLeapFrame(event);
             });
             return _this;
@@ -54,14 +49,14 @@ define(["require", "exports", "../../../typings/leapmotionTS/leapmotionts-2.2.4"
                 var direction;
                 for (var i = 0; i < gestures.length; i++) {
                     switch (gestures[i].type) {
-                        case Leap.Type.TYPE_SWIPE:
+                        case leapmotionts_1.Gesture.TYPE_SWIPE:
                             var swipe = gestures[i];
                             direction = swipe.direction;
                             var absX = Math.abs(direction.x);
                             var absY = Math.abs(direction.y);
                             if (absX > absY) {
                                 var time = Date.now();
-                                if (time - this.swipe.start > 500 && swipe.state === Leap.State.STATE_STOP) {
+                                if (time - this.swipe.start > 500 && swipe.state === leapmotionts_1.Gesture.STATE_STOP) {
                                     var dir = absX / direction.x;
                                     this.console("new swipe : !" + swipe.state + " :: " + dir);
                                     this.swipe.start = time;
@@ -73,7 +68,7 @@ define(["require", "exports", "../../../typings/leapmotionTS/leapmotionts-2.2.4"
                                 }
                             }
                             break;
-                        case Leap.Type.TYPE_SCREEN_TAP:
+                        case leapmotionts_1.Gesture.TYPE_SCREEN_TAP:
                             var tap = gestures[i];
                             direction = tap.direction;
                             this.console("tap : " + direction.z.toFixed(2));
@@ -100,7 +95,7 @@ define(["require", "exports", "../../../typings/leapmotionTS/leapmotionts-2.2.4"
             this.consoleDiv.innerHTML = message;
         };
         return LeapController;
-    }(BaseController));
+    }(base_controller_1.BaseController));
     return LeapController;
 });
 //# sourceMappingURL=LeapController.js.map

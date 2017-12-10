@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Plane = (function () {
+    var Plane = /** @class */ (function () {
         function Plane(material) {
             var _this = this;
             this.done = false;

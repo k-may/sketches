@@ -4,7 +4,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Color = (function () {
+    var Color = /** @class */ (function () {
         function Color(r, g, b, a) {
             this.r = 0;
             this.r = r || 255;

@@ -4,7 +4,7 @@ define(["require", "exports", "../common/canvas_buffer2d"], function (require, e
     /**
      * Created by kev on 15-07-01.
      */
-    var CanvasUtils = (function () {
+    var CanvasUtils = /** @class */ (function () {
         function CanvasUtils() {
         }
         CanvasUtils.CreateImageData = function (w, h) {

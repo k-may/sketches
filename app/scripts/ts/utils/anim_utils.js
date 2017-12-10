@@ -5,7 +5,7 @@ define(["require", "exports"], function (require, exports) {
      * Created by kev on 15-09-30.
      */
     var $M = window.hasOwnProperty("$M") ? window["$M"] : {};
-    var AnimUtils = (function () {
+    var AnimUtils = /** @class */ (function () {
         function AnimUtils() {
         }
         AnimUtils.SetPosition = function (el, pos) {

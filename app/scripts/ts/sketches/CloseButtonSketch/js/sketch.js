@@ -14,7 +14,7 @@ define(["require", "exports", "../../../common/base_sketch", "../../../common/ca
     /**
      * Created by kev on 16-02-08.
      */
-    var Line = (function () {
+    var Line = /** @class */ (function () {
         function Line() {
             this.d1 = { x: 0, y: 0 };
             this.s1 = { x: 0, y: 0 };
@@ -45,7 +45,7 @@ define(["require", "exports", "../../../common/base_sketch", "../../../common/ca
         };
         return Line;
     }());
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         function Sketch(div) {
             var _this = _super.call(this) || this;

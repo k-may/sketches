@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kev on 15-07-01.
      */
-    var TweenUtils = (function () {
+    var TweenUtils = /** @class */ (function () {
         function TweenUtils() {
         }
         TweenUtils.easeInExpo = function (t, b, c, d) {

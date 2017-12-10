@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kev on 2016-05-18.
      */
-    var CanvasBuffer2D = (function () {
+    var CanvasBuffer2D = /** @class */ (function () {
         function CanvasBuffer2D() {
             this.canvas = document.createElement("canvas");
             this.ctx = this.canvas.getContext("2d");

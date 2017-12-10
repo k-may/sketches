@@ -4,15 +4,15 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var BaseSketch = (function () {
+    var BaseSketch = /** @class */ (function () {
         //-----------------------------------------------------------
-        function BaseSketch() {
+        function BaseSketch(el) {
             this._windowWidth = -1;
             this._windowHeight = -1;
             this._scrollRatio = 0.0;
             this._invalidated = false;
             this._animDuration = 1000;
-            this.el = document.createElement("div");
+            this.el = el || document.createElement("div");
             this.el.setAttribute('class', 'sketch_cont');
             this.$el = $(this.el);
         }

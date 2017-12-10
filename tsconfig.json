@@ -4,7 +4,8 @@
     "target": "es5",
     "sourceMap": true,
     "moduleResolution": "classic",
-    "lib" : ["es2015", "es2015.iterable", "dom"]
+    "lib" : ["es2015", "es2015.iterable", "dom"],
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kev on 2016-05-19.
      */
-    var MenuView = (function () {
+    var MenuView = /** @class */ (function () {
         function MenuView(sketches) {
             //create menu
             this.el = document.createElement("ul");

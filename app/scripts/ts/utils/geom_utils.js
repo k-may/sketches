@@ -4,13 +4,13 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Point = (function () {
+    var Point = /** @class */ (function () {
         function Point() {
         }
         return Point;
     }());
     exports.Point = Point;
-    var GeomUtils = (function () {
+    var GeomUtils = /** @class */ (function () {
         function GeomUtils() {
         }
         GeomUtils.LerpPoint = function (start, dest, percentage) {

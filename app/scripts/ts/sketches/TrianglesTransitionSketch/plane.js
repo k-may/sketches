@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kevin.mayo on 7/28/2017.
      */
-    var Plane = (function () {
+    var Plane = /** @class */ (function () {
         function Plane(l, r, d) {
             this.bottomLine = { l: { x: -0.5, y: 0.5 }, r: { x: 0.5, y: 0.5 } };
             this.destBottomLine = { l: { x: -0.5, y: 0.5 }, r: { x: 0.5, y: 0.5 } };

@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kev on 16-02-16.
      */
-    var Col = (function () {
+    var Col = /** @class */ (function () {
         //----------------------------------------------------------
         function Col(size) {
             this.complete = false;

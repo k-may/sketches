@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "./sketch"], function (require, exports, sketch_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MeshTexture = (function (_super) {
+    var MeshTexture = /** @class */ (function (_super) {
         __extends(MeshTexture, _super);
         function MeshTexture(canvas, sketch) {
             var _this = _super.call(this) || this;

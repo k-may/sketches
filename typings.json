@@ -1,13 +1,15 @@
 {
   "name": "sketches",
-  "dependencies": {},
+  "dependencies": {
+    "leapmotionts": "registry:dt/leapmotionts#0.7.9+20160819211420"
+  },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
     "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
     "modernizr": "registry:dt/modernizr#3.2.0+20160215162030",
     "require": "registry:dt/require#2.1.20+20160316155526",
-    "three": "registry:dt/three#0.0.0+20160517065351",
+    "three": "registry:dt/three#0.84.0+20170323144537",
     "tween.js": "registry:dt/tween.js#0.0.0+20160317120654",
     "underscore": "registry:dt/underscore#1.7.0+20160505190121"
   }

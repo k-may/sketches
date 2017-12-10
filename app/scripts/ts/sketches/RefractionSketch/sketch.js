@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "../../common/base_sketch", "../../utils/load_utils", "ts/sketches/RefractionSketch/OBJLoader"], function (require, exports, base_sketch_1, load_utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         //--------------------------------------------------
         function Sketch(div) {
@@ -120,7 +120,7 @@ define(["require", "exports", "../../common/base_sketch", "../../utils/load_util
                     vertexShader: src[1],
                     side: THREE.DoubleSide
                 });
-                var loader = new THREE.OBJLoader();
+                var loader = new OBJLoader();
                 loader.load(_this.path + 'CubeUV.obj', function (object) {
                     object.traverse(function (child) {
                         if (child instanceof THREE.Mesh) {

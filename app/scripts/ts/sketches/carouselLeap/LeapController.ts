@@ -1,15 +1,12 @@
 /**
  * Created by kev on 16-01-06.
  */
-///<reference path="../../../typings/leapmotionTS/leapmotionts-2.2.4.d.ts"/>
-///<reference path="../../ts/base_controller.ts"/>
-
-import Leap = require("../../../typings/leapmotionTS/leapmotionts-2.2.4");
-import BaseController = require("../../ts/base_controller");
+import {BaseController} from "../../common/base_controller";
+import {Controller, Frame, Gesture, Hand, LeapEvent, ScreenTapGesture, SwipeGesture, Vector3} from "leapmotionts";
 
 class LeapController extends BaseController{
 
-    controller:Leap.Controller;
+    controller:Controller;
     consoleDiv:HTMLDivElement;
     consoles:string[];
     swipe : any = {
@@ -24,16 +21,16 @@ class LeapController extends BaseController{
         this.createElements();
 
 
-        this.controller = new Leap.Controller();
+        this.controller = new Controller();
 
 
-        this.controller.addEventListener(Leap.LeapEvent.LEAPMOTION_CONNECTED, (event:Leap.LeapEvent) => {
+        this.controller.addEventListener(LeapEvent.LEAPMOTION_CONNECTED, (event:LeapEvent) => {
             this.console("connected");
-            this.controller.enableGesture(Leap.Type.TYPE_SWIPE);
-            this.controller.enableGesture(Leap.Type.TYPE_SCREEN_TAP);
+            this.controller.enableGesture(Gesture.TYPE_SWIPE);
+            this.controller.enableGesture(Gesture.TYPE_SCREEN_TAP);
         });
 
-        this.controller.addEventListener(Leap.LeapEvent.LEAPMOTION_FRAME, (event:Leap.LeapEvent) => {
+        this.controller.addEventListener(LeapEvent.LEAPMOTION_FRAME, (event:LeapEvent) => {
             this.onLeapFrame(event);
         });
     }
@@ -50,22 +47,22 @@ class LeapController extends BaseController{
 
     }
 
-    onLeapFrame(event:Leap.LeapEvent) {
-        var frame:Leap.Frame = event.frame;
-        var hand:Leap.Hand = null;
+    onLeapFrame(event:LeapEvent) {
+        var frame:Frame = event.frame;
+        var hand:Hand = null;
         if (frame.hands.length > 0) {
             hand = frame.hands[0];
         }
 
         if (hand) {
 
-            var gestures:Leap.Gesture[] = frame.gestures();
-            var direction:Leap.Vector3;
+            var gestures:Gesture[] = frame.gestures();
+            var direction:Vector3;
             for (var i = 0; i < gestures.length; i++) {
 
                 switch (gestures[i].type) {
-                    case Leap.Type.TYPE_SWIPE:
-                        var swipe:Leap.SwipeGesture = <Leap.SwipeGesture>gestures[i];
+                    case Gesture.TYPE_SWIPE:
+                        var swipe:SwipeGesture = <SwipeGesture>gestures[i];
 
                         direction = swipe.direction;
                         var absX = Math.abs(direction.x);
@@ -74,7 +71,7 @@ class LeapController extends BaseController{
                         if (absX > absY) {
 
                             var time = Date.now();
-                            if(time - this.swipe.start > 500 && swipe.state === Leap.State.STATE_STOP){
+                            if(time - this.swipe.start > 500 && swipe.state === Gesture.STATE_STOP){
                                 var dir:number = absX / direction.x;
 
                                 this.console("new swipe : !" + swipe.state + " :: " + dir);
@@ -92,8 +89,8 @@ class LeapController extends BaseController{
                         }
 
                         break;
-                    case Leap.Type.TYPE_SCREEN_TAP:
-                        var tap:Leap.ScreenTapGesture = <Leap.ScreenTapGesture>gestures[i];
+                    case Gesture.TYPE_SCREEN_TAP:
+                        var tap:ScreenTapGesture = <ScreenTapGesture>gestures[i];
 
                         direction = tap.direction;
                         this.console("tap : " + direction.z.toFixed(2));

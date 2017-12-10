@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Created by kevin.mayo on 8/3/2017.
      */
-    var SpritePlane = (function () {
+    var SpritePlane = /** @class */ (function () {
         //----------------------------------------------------------
         function SpritePlane(spriteData) {
             this.name = spriteData.name;

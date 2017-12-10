@@ -14,7 +14,7 @@ define(["require", "exports", "../../../common/base_sketch", "./sprite_data", ".
     /**
      * Created by kev on 16-02-08.
      */
-    var Sketch = (function (_super) {
+    var Sketch = /** @class */ (function (_super) {
         __extends(Sketch, _super);
         //------------------------------------------------------
         function Sketch(div) {
