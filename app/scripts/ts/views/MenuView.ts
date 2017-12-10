@@ -10,6 +10,9 @@ export class MenuView{
         this.el = document.createElement("ul");
         this.el.setAttribute("class", "menu_cont");
 
+        var button = document.createElement("button");
+        this.el.appendChild(button);
+
         for (var key in sketches) {
             var item = document.createElement("li");
             item.setAttribute("id",key);
